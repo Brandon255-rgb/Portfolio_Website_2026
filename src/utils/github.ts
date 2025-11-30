@@ -1,5 +1,3 @@
-declare const import.meta: any;
-
 const _cache: Record<string, any> = {};
 
 import { Octokit } from 'octokit';

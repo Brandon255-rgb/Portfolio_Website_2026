@@ -18,7 +18,7 @@
         </span>
       </div>
       <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-        Ready to <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-400">Build?</span>
+        Ready to <span class="text-blue-400 font-extrabold">Build?</span>
       </h2>
       <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
         Available for freelance projects, consulting, or full-time opportunities.<br />
@@ -29,7 +29,7 @@
     <!-- Contact Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
       <a 
-        href="mailto:brandon@example.com" 
+        href="mailto:brandon.vanvuuren60@gmail.com" 
         class="contact-card group"
       >
         <div class="contact-icon-wrapper bg-linear-to-br from-blue-500/20 to-cyan-500/20 border-blue-500/30">
@@ -63,7 +63,7 @@
       </a>
       
       <a 
-        href="https://linkedin.com/in/yourprofile" 
+        href="https://www.linkedin.com/in/brandon-van-vuuren-9616841b6" 
         target="_blank" 
         rel="noopener noreferrer"
         class="contact-card group"
@@ -81,7 +81,7 @@
       </a>
       
       <a 
-        href="https://twitter.com/yourhandle" 
+        href="https://www.linkedin.com/in/brandon-van-vuuren-9616841b6" 
         target="_blank" 
         rel="noopener noreferrer"
         class="contact-card group"
@@ -144,8 +144,8 @@
         Prefer to send a message directly?
       </p>
       <a 
-        href="mailto:brandon@example.com"
-        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105"
+        href="mailto:brandon.vanvuuren60@gmail.com"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-semibold transition-shadow duration-200 shadow-sm shadow-blue-500/9 hover:shadow-blue-500/18"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -213,13 +213,15 @@
   .contact-card-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 70%);
+    /* much more subtle blue glow */
+    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.072), transparent 65%);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+    filter: blur(18px);
   }
-  
+
   .contact-card:hover .contact-card-glow {
-    opacity: 1;
+    opacity: 0.315; /* minimal visible glow on hover - 10% less */
   }
   
   .contact-icon-wrapper {

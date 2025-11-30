@@ -1,5 +1,6 @@
 ---
 import { devProjects, aiProjects } from '../data/projects';
+import VideoModal from './VideoModal.astro';
 ---
 
 <section id="projects" class="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -20,7 +21,7 @@ import { devProjects, aiProjects } from '../data/projects';
           </span>
         </div>
         <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-          Development <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-400">Projects</span>
+          Development <span class="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Projects</span>
         </h2>
         <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
           Production applications engineered for scale, performance, and exceptional user experience
@@ -34,7 +35,7 @@ import { devProjects, aiProjects } from '../data/projects';
             style={`animation-delay: ${index * 0.1}s;`}
           >
             <!-- Glow effect on hover -->
-            <div class="absolute inset-0 bg-linear-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"></div>
+            <div class="absolute inset-0 bg-linear-to-r from-blue-500/18 to-cyan-500/18 rounded-2xl opacity-0 group-hover:opacity-90 blur-xl transition-all duration-500"></div>
             
             <div class="relative h-full bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-blue-500/50 overflow-hidden transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-translate-y-2">
               {project.image && (
@@ -71,6 +72,17 @@ import { devProjects, aiProjects } from '../data/projects';
                 </div>
                 
                 <div class="flex gap-3">
+                  {project.video && (
+                    <button 
+                      onclick={`window.openVideoModal('${project.video}')`}
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/23 hover:shadow-purple-500/36 group/btn"
+                    >
+                      <svg class="w-4 h-4 group-hover/btn:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                      <span class="text-sm font-medium">Watch Demo</span>
+                    </button>
+                  )}
                   {project.github && (
                     <a 
                       href={project.github} 
@@ -89,7 +101,7 @@ import { devProjects, aiProjects } from '../data/projects';
                       href={project.live} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 group/btn"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/23 hover:shadow-blue-500/36 group/btn"
                     >
                       <span class="text-sm font-medium">Live Demo</span>
                       <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,7 +126,7 @@ import { devProjects, aiProjects } from '../data/projects';
           </span>
         </div>
         <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-            Artificial <span class="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-400">Intelligence</span>
+            Artificial <span class="bg-linear-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Intelligence</span>
           </h2>
         <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
           Custom AI solutions that work—automation, fine-tuned models, and intelligent bots that deliver real business value
@@ -226,7 +238,7 @@ import { devProjects, aiProjects } from '../data/projects';
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {project.image && (
               <div class="order-2 lg:order-1">
-                <div class="aspect-video rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl shadow-purple-500/20 relative group/img">
+                <div class="aspect-video rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl shadow-purple-500/18 relative group/img">
                   <div class="absolute inset-0 bg-linear-to-t from-purple-900/50 via-transparent to-transparent z-10"></div>
                   <img 
                     src={project.image} 
@@ -259,19 +271,32 @@ import { devProjects, aiProjects } from '../data/projects';
                 ))}
               </div>
               
-              {project.github && (
-                <a 
-                  href={project.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-3 px-6 py-4 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 font-semibold group/btn"
-                >
-                  <span>View Project Details</span>
-                  <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              )}
+              <div class="flex gap-4 flex-wrap">
+                {project.video && (
+                  <button 
+                    onclick={`window.openVideoModal('${project.video}')`}
+                    class="inline-flex items-center gap-3 px-6 py-4 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/23 hover:shadow-purple-500/36 font-semibold group/btn"
+                  >
+                    <svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <span>Watch Demo</span>
+                  </button>
+                )}
+                {project.github && (
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-3 px-6 py-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 hover:border-slate-600 text-slate-300 hover:text-white rounded-xl transition-all duration-300 backdrop-blur-sm font-semibold group/btn"
+                  >
+                    <span>View Project Details</span>
+                    <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -351,3 +376,5 @@ import { devProjects, aiProjects } from '../data/projects';
     }
   }
 </style>
+
+<VideoModal videoUrl="" projectTitle="" />
