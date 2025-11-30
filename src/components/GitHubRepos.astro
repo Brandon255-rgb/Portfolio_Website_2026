@@ -277,6 +277,30 @@ try {
     if (e.key === 'ArrowLeft') prevCard();
     if (e.key === 'ArrowRight') nextCard();
   });
+
+  // Touch / swipe support for mobile
+  let touchStartX = null;
+  let touchDeltaX = 0;
+  const cardsContainerEl = typeof document !== 'undefined' ? document.getElementById('cardsContainer') : null;
+
+  cardsContainerEl?.addEventListener('touchstart', (e) =&gt; {
+    touchStartX = e.touches[0].clientX;
+    touchDeltaX = 0;
+  }, { passive: true });
+
+  cardsContainerEl?.addEventListener('touchmove', (e) =&gt; {
+    if (touchStartX === null) return;
+    touchDeltaX = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
+
+  cardsContainerEl?.addEventListener('touchend', () =&gt; {
+    if (touchStartX === null) return;
+    const threshold = 40; // px
+    if (touchDeltaX < -threshold) nextCard();
+    else if (touchDeltaX > threshold) prevCard();
+    touchStartX = null;
+    touchDeltaX = 0;
+  });
   
   // Initialize
   updateCards();

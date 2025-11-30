@@ -1,0 +1,25 @@
+GitHub Organization:
+https://github.com/NWU-Recode
+
+GitHub Backend:
+https://github.com/NWU-Recode/Recode-Backend
+
+GitHub Frontend:
+https://github.com/NWU-Recode/Recode-Frontend
+
+GitHub Documentation:
+https://github.com/NWU-Recode/Recode-Documentation
+
+
+
+
+Hosted backend (Swagger):
+https://recode-backend.onrender.com/docs
+
+Hosted frontend:
+https://recode-frontend.vercel.app/login
+
+Hosted User guide:
+https://recode-documentation.vercel.app/
+
+Pseudo Doc (attached)
