@@ -1,0 +1,29 @@
+---
+---
+
+<section class="github-repos">
+  <h2>GitHub Repositories</h2>
+  <div class="repos-list">
+    <!-- Recommended usage: call `getGitHubRepos()` at build-time from a page
+         (Astro page script runs at build-time) so data is baked into the site.
+         Example (in `src/pages/index.astro`):
+
+         ---
+         import { getGitHubRepos } from '../utils/github';
+         const repos = await getGitHubRepos(import.meta.env.GITHUB_USERNAME || 'your-username');
+         ---
+
+    -->
+
+    <!-- Example placeholder repo card (replace by iterating `repos`) -->
+    <article class="repo-card">
+      <a href="#" class="repo-link">
+        <img src="/images/github-avatar.jpg" alt="Repo owner avatar" loading="lazy" decoding="async" width="48" height="48" style="border-radius:6px;" />
+        <div class="repo-body">
+          <h3>Repo Name</h3>
+          <p class="repo-desc">Short description of the repository.</p>
+        </div>
+      </a>
+    </article>
+  </div>
+</section>
