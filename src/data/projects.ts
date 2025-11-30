@@ -31,7 +31,7 @@ export const projects: Project[] = [
     longDescription: "Built a comprehensive coding challenge platform with AI-powered code review, automated testing, and real-time feedback. Features include difficulty-adaptive challenges, performance analytics, skill tracking with badges, and detailed coding metrics. Used by companies for technical interviews and by developers for skill improvement.",
     tech: ["TypeScript", "React", "Python", "FastAPI", "PostgreSQL", "Docker", "OpenAI API"],
     github: "https://github.com/Brandon255-rgb/recode-platform",
-    image: "/images/Proof of Work/Recode/overviewCards.png",
+    image: "/images/Proof of Work/Recode/coding_challenge.png",
     video: "/images/Proof of Work/Recode/recode_presentation.mp4",
     featured: true,
     category: 'dev'
@@ -53,6 +53,7 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "PostgreSQL", "TypeScript", "Chart.js", "Tailwind CSS"],
     github: "https://github.com/Brandon255-rgb/university-system",
     image: "/images/Proof of Work/University Website/whbd8cylzblqjumatmje.webp",
+    video: "/images/Proof of Work/University Website/university_demo.mp4",
     featured: true,
     category: 'dev'
   },

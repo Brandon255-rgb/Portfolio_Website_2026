@@ -22,22 +22,23 @@
       </p>
     </div>
 
+    <!-- Top Section - Stats/CV and Bio -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
-      <!-- Left Column - Stats & Highlights -->
+      <!-- Left Column - Stats & CV -->
       <div class="space-y-6">
         <div class="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8">
           <h3 class="text-2xl font-bold text-white mb-6">Quick Stats</h3>
           <div class="grid grid-cols-2 gap-6">
             <div class="stat-card">
-              <div class="text-4xl font-black text-blue-400 mb-2">5+</div>
+              <div class="text-4xl font-black text-blue-400 mb-2">3+</div>
               <div class="text-sm text-slate-400">Years Experience</div>
             </div>
             <div class="stat-card">
-              <div class="text-4xl font-black text-blue-400 mb-2">100+</div>
+              <div class="text-4xl font-black text-blue-400 mb-2">30+</div>
               <div class="text-sm text-slate-400">Projects Shipped</div>
             </div>
             <div class="stat-card">
-              <div class="text-4xl font-black text-blue-400 mb-2">50+</div>
+              <div class="text-4xl font-black text-blue-400 mb-2">15+</div>
               <div class="text-sm text-slate-400">Clients Served</div>
             </div>
             <div class="stat-card">
@@ -82,53 +83,241 @@
       <div class="space-y-6">
         <div class="prose prose-invert max-w-none">
           <p class="text-lg text-slate-300 leading-relaxed">
-            I'm <strong class="text-white">Brandon van Vuuren</strong>, a full-stack developer and AI engineer who builds 
-            <strong class="text-blue-400">production-ready applications</strong> that scale. I specialize in turning complex 
-            requirements into clean, maintainable systems that deliver real business value.
+            I'm <strong class="text-white">Brandon van Vuuren</strong>, a full-stack developer and AI engineer who loves building 
+            <strong class="text-blue-400">production-ready applications</strong> that actually work at scale. I get excited about 
+            turning messy, complex requirements into clean systems that deliver real value to businesses and their users.
           </p>
 
           <p class="text-lg text-slate-300 leading-relaxed">
-            My expertise spans the <strong class="text-white">modern JavaScript/TypeScript ecosystem</strong>—React, Next.js, 
-            Node.js—backed by robust databases (PostgreSQL, MongoDB) and cloud infrastructure. I architect systems with 
-            performance, scalability, and maintainability in mind from day one.
+            My bread and butter is the <strong class="text-white">modern JavaScript/TypeScript ecosystem</strong>. I work with 
+            React, Next.js, and Node.js daily, backed by solid databases like PostgreSQL and MongoDB. From day one, I'm thinking 
+            about performance, how things will scale, and whether the code will still make sense six months from now.
           </p>
 
           <p class="text-lg text-slate-300 leading-relaxed">
-            On the <strong class="text-blue-400">AI & automation side</strong>, I fine-tune large language models for 
-            domain-specific tasks, build intelligent automation pipelines that eliminate repetitive work, and deploy ML 
-            systems that integrate seamlessly with existing applications. I focus on practical AI that solves real problems, 
-            not just impressive demos.
+            When it comes to <strong class="text-blue-400">AI and automation</strong>, I love fine-tuning language models for 
+            specific use cases, building smart automation that cuts out tedious work, and deploying ML systems that fit naturally 
+            into existing workflows. I'm all about practical AI that solves actual problems, not just flashy demos that look cool 
+            but don't help anyone.
           </p>
 
           <p class="text-lg text-slate-300 leading-relaxed">
-            I've worked with startups and enterprises across multiple industries—from real-time analytics dashboards processing 
-            10k+ events per second to custom LLM pipelines reducing training costs by 60%. My approach: understand the problem, 
-            architect the solution, ship fast, iterate based on feedback.
+            I've had the chance to work with startups and bigger companies across different industries. From real-time analytics 
+            dashboards handling 10k+ events per second to custom LLM pipelines that cut training costs by 60%, every project teaches 
+            me something new. My process is pretty straightforward: really understand what needs to happen, design something that'll 
+            work, ship it quickly, and then improve it based on real feedback.
           </p>
         </div>
+      </div>
+    </div>
 
-        <!-- Skills -->
-        <div class="pt-6">
-          <h3 class="text-xl font-bold text-white mb-4">Core Expertise</h3>
-          <div class="flex flex-wrap gap-3">
-            <span class="skill-pill">TypeScript</span>
-            <span class="skill-pill">React & Next.js</span>
-            <span class="skill-pill">Node.js</span>
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">PostgreSQL</span>
-            <span class="skill-pill">AI/ML Engineering</span>
-            <span class="skill-pill">System Architecture</span>
-            <span class="skill-pill">DevOps & CI/CD</span>
+    <!-- Core Expertise - Full Width with 3D Chart -->
+    <div class="mb-16">
+      <div class="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8">
+        <h3 class="text-2xl font-bold text-white mb-8">Core Expertise</h3>
+        
+        <!-- 3D Skills Visualization -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="skills-container">
+          <!-- TypeScript -->
+          <div class="skill-card" data-level="95">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128">
+                <path fill="#007acc" d="M2 63.91v62.5h125v-125H2zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1 23 23 0 01-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a9.34 9.34 0 011.15-.73L82 101l3.59-2.08.75 1.11a16.78 16.78 0 004.74 4.54c4 2.1 9.46 1.81 12.16-.62a5.43 5.43 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H57.16v46.23H45.65V69.26H29.38v-5a49.19 49.19 0 01.14-5.16c.06-.08 10-.12 22-.1h21.81z"></path>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">TypeScript</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 95%"></div>
+              </div>
+              <div class="skill-percentage">95%</div>
+            </div>
+          </div>
+
+          <!-- React & Next.js -->
+          <div class="skill-card" data-level="92">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128">
+                <g fill="#61DAFB"><circle cx="64" cy="64" r="11.4"></circle><path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 16-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.4-.7 4.7-1.4 6.9-2.3 12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3-.3 2.1-.8 4.3-1.4 6.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13 7.4-7.3 14.9-12.3 21-12.3 1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6-3.7.3-7.4.4-11.2.4-3.9 0-7.6-.1-11.2-.4-2.2-3.2-4.2-6.4-6-9.6-1.9-3.3-3.7-6.7-5.3-10 1.6-3.3 3.4-6.7 5.3-10 1.8-3.2 3.9-6.4 6.1-9.6 3.7-.3 7.4-.4 11.2-.4 3.9 0 7.6.1 11.2.4 2.2 3.2 4.2 6.4 6 9.6 1.9 3.3 3.7 6.7 5.3 10-1.7 3.3-3.4 6.6-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3-3.4.8-7 1.4-10.8 1.9 1.2-1.9 2.5-3.9 3.6-6 1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3 2.3.1 4.6.2 6.9.2 2.3 0 4.6-.1 6.9-.2-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9 1.1-3.3 2.3-6.8 3.8-10.3 1.1 2 2.2 4.1 3.4 6.1 1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3 3.4-.8 7-1.4 10.8-1.9-1.2 1.9-2.5 3.9-3.6 6-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3-2.3-.1-4.6-.2-6.9-.2-2.3 0-4.6.1-6.9.2 2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21.1c-1.2-2-2.3-4.1-3.4-6.2-1.2-2.1-2.4-4.1-3.6-6-1.2-1.9-2.5-3.9-3.6-6 3.8.5 7.4 1.1 10.8 1.9-1.1 3.3-2.3 6.8-3.8 10.3-1.1 2-2.2 4.1-3.4 6zm25.5 4.1c-9.9-3.8-21.3-6-33.7-6s-23.8 2.2-33.7 6c-10.4 4-15.9 9.2-15.9 14.9s5.5 10.9 15.9 14.9c9.9 3.8 21.3 6 33.7 6s23.8-2.2 33.7-6c10.4-4 15.9-9.2 15.9-14.9s-5.5-10.9-15.9-14.9z"></path></g>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">React & Next.js</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 92%"></div>
+              </div>
+              <div class="skill-percentage">92%</div>
+            </div>
+          </div>
+
+          <!-- Node.js -->
+          <div class="skill-card" data-level="88">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128">
+                <path fill="#83CD29" d="M112.678 30.334L68.535 4.729c-2.781-1.584-6.424-1.584-9.227 0L14.82 30.334C11.951 31.985 10 35.088 10 38.407v51.142c0 3.319 1.951 6.423 4.82 8.074l11.272 6.545c6.106 3.047 8.279 3.047 11.08 3.047 9.093 0 14.333-5.537 14.333-15.111v-50.41c0-.713-.371-1.333-1.063-1.333h-4.561c-.696 0-1.062.62-1.062 1.333v50.41c0 3.855-4.007 7.683-10.458 4.46l-11.797-6.799c-.392-.228-.635-.65-.635-1.111v-51.142c0-.467.242-.886.635-1.114l44.143-25.605c.387-.224.896-.224 1.279 0l44.143 25.605c.393.228.636.647.636 1.114v51.142c0 .462-.243.883-.636 1.111l-44.143 25.605c-.383.224-.892.224-1.279 0l-11.262-6.68c-.371-.214-.848-.28-1.278-.083-3.537 1.884-4.208 2.168-7.506 3.221-.782.249-1.957.615.473 1.787l14.67 8.723c1.388.803 2.942 1.202 4.495 1.202 1.554 0 3.107-.399 4.495-1.202l44.142-25.605c2.868-1.651 4.821-4.754 4.821-8.074v-51.142c.001-3.319-1.952-6.423-4.82-8.074"></path>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">Node.js</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 88%"></div>
+              </div>
+              <div class="skill-percentage">88%</div>
+            </div>
+          </div>
+
+          <!-- Python -->
+          <div class="skill-card" data-level="90">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128">
+                <linearGradient id="python-a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"></stop><stop offset="1" stop-color="#306998"></stop></linearGradient><linearGradient id="python-b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"></stop><stop offset="1" stop-color="#FFE873"></stop></linearGradient><path fill="url(#python-a)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" transform="translate(0 10.26)"></path><path fill="url(#python-b)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" transform="translate(0 10.26)"></path><radialGradient id="python-c" cx="1825.678" cy="444.45" r="26.743" gradientTransform="matrix(0 -.24 -1.055 0 532.979 557.576)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#B8B8B8" stop-opacity=".498"></stop><stop offset="1" stop-color="#7F7F7F" stop-opacity="0"></stop></radialGradient><path opacity=".444" fill="url(#python-c)" d="M97.309 119.597c0 3.543-14.816 6.416-33.091 6.416-18.276 0-33.092-2.873-33.092-6.416 0-3.544 14.815-6.417 33.092-6.417 18.275 0 33.091 2.872 33.091 6.417z"></path>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">Python</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 90%"></div>
+              </div>
+              <div class="skill-percentage">90%</div>
+            </div>
+          </div>
+
+          <!-- PostgreSQL -->
+          <div class="skill-card" data-level="85">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128">
+                <path fill="#336791" d="M108.662 91.224c-1.112 0-2.07.372-2.845 1.105-3.314 3.096-7.233 4.65-11.656 4.65-4.424 0-8.343-1.554-11.66-4.65-3.315-3.096-4.966-6.866-4.966-11.277 0-4.425 1.651-8.18 4.966-11.277 3.317-3.096 7.236-4.65 11.66-4.65 4.423 0 8.342 1.554 11.656 4.65.775.733 1.733 1.105 2.845 1.105 1.097 0 2.045-.372 2.819-1.105.79-.747 1.179-1.68 1.179-2.804 0-1.11-.39-2.042-1.179-2.804-4.47-4.212-9.86-6.321-16.32-6.321-6.457 0-11.849 2.109-16.32 6.32-4.456 4.212-6.691 9.308-6.691 15.301 0 5.979 2.235 11.089 6.691 15.287 4.471 4.197 9.863 6.32 16.32 6.32 6.46 0 11.85-2.123 16.32-6.32.789-.762 1.179-1.68 1.179-2.804 0-1.11-.39-2.057-1.179-2.804-.774-.733-1.722-1.105-2.819-1.105zm-17.501-51.398c-17.077 0-32.066 5.978-44.965 17.91v-12.9c0-1.124-.403-2.083-1.207-2.873-.79-.79-1.752-1.179-2.845-1.179-1.11 0-2.069.389-2.859 1.179-.79.79-1.193 1.749-1.193 2.873V88.42c0 1.096.403 2.044 1.193 2.845.79.775 1.749 1.164 2.859 1.164 1.093 0 2.055-.389 2.845-1.164.804-.8 1.207-1.749 1.207-2.845V65.497c6.085-7.28 12.88-12.67 20.387-16.149 7.521-3.465 15.069-5.213 22.578-5.213 14.197 0 25.726 4.866 34.588 14.614.79.79 1.749 1.193 2.859 1.193 1.11 0 2.057-.403 2.833-1.193.79-.79 1.193-1.763 1.193-2.873 0-1.11-.403-2.084-1.193-2.86-5.26-5.808-11.585-10.25-18.976-13.316-7.392-3.082-15.317-4.623-23.788-4.623z"></path>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">PostgreSQL</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 85%"></div>
+              </div>
+              <div class="skill-percentage">85%</div>
+            </div>
+          </div>
+
+          <!-- AI/ML -->
+          <div class="skill-card" data-level="87">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128" fill="none">
+                <circle cx="64" cy="64" r="48" fill="#4F46E5" opacity="0.2"/>
+                <path d="M64 20 L84 44 L64 44 L84 68 L64 68 L84 92 L64 92" stroke="#4F46E5" stroke-width="4" fill="none"/>
+                <path d="M64 20 L44 44 L64 44 L44 68 L64 68 L44 92 L64 92" stroke="#818CF8" stroke-width="4" fill="none"/>
+                <circle cx="64" cy="64" r="8" fill="#4F46E5"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">AI/ML</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 87%"></div>
+              </div>
+              <div class="skill-percentage">87%</div>
+            </div>
+          </div>
+
+          <!-- Architecture -->
+          <div class="skill-card" data-level="89">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128" fill="none">
+                <rect x="20" y="20" width="30" height="30" fill="#3B82F6" opacity="0.3" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="78" y="20" width="30" height="30" fill="#3B82F6" opacity="0.3" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="20" y="78" width="30" height="30" fill="#3B82F6" opacity="0.3" stroke="#3B82F6" stroke-width="2"/>
+                <rect x="78" y="78" width="30" height="30" fill="#3B82F6" opacity="0.3" stroke="#3B82F6" stroke-width="2"/>
+                <line x1="50" y1="35" x2="78" y2="35" stroke="#60A5FA" stroke-width="2"/>
+                <line x1="35" y1="50" x2="35" y2="78" stroke="#60A5FA" stroke-width="2"/>
+                <line x1="93" y1="50" x2="93" y2="78" stroke="#60A5FA" stroke-width="2"/>
+                <line x1="50" y1="93" x2="78" y2="93" stroke="#60A5FA" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">Architecture</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 89%"></div>
+              </div>
+              <div class="skill-percentage">89%</div>
+            </div>
+          </div>
+
+          <!-- DevOps -->
+          <div class="skill-card" data-level="83">
+            <div class="skill-icon-wrapper">
+              <svg class="skill-icon" viewBox="0 0 128 128">
+                <path fill="#0db7ed" d="M124.8 52.1c-4.3-2.5-10-2.8-14.8-1.4-.6-5.2-4-9.7-8-12.9l-1.6-1.3-1.4 1.6c-2.7 3.1-3.5 8.3-3.1 12.3.3 2.9 1.2 5.9 3 8.3-1.4.8-2.9 1.9-4.3 2.4-2.8 1-5.9 2-8.9 2H79V49H66V24H51v12H26v13H13v14H1.8l.2 1.5c.5 4.5 1.5 8.9 3 13.1l.5 1.2h.1c9.3 20.6 31.7 33.4 54.5 33.4 7.7 0 15.3-.6 22.9-2.1 17.7-3.4 33.4-11.4 44.9-23.3l1.4-1.4-.7-1.8c-2.5-6.5-6.8-11.2-11.9-14.6zM93.1 20.8c-.1.1-.2.2-.3.4-.4.5-1.1 1.2-1.5 1.4-.1 0-.1.1-.2.1-.2-.1-.3-.4-.3-.6 0-.3.1-.6.2-.9.1-.2.2-.4.3-.5.3-.3.6-.5.9-.6.4-.1.9-.1 1.3.1-.1.2-.2.4-.4.6z"></path>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <div class="skill-name">DevOps</div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 83%"></div>
+              </div>
+              <div class="skill-percentage">83%</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <script>
+      // 3D Skill Card Animation
+      const skillCards = document.querySelectorAll('.skill-card');
+      
+      skillCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+      });
+
+      // Animate skill bars on scroll
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll('.skill-card');
+            cards.forEach(card => {
+              const fill = card.querySelector('.skill-fill');
+              const targetWidth = fill.style.width;
+              fill.style.width = '0';
+              setTimeout(() => {
+                fill.style.transition = 'width 1.5s ease-out';
+                fill.style.width = targetWidth;
+              }, 100);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const skillsContainer = document.getElementById('skills-container');
+      if (skillsContainer) {
+        observer.observe(skillsContainer);
+      }
+    </script>
+
     <!-- CTA -->
     <div class="text-center">
       <a 
         href="#contact" 
-        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 group"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 group border-[1.2px] border-white"
       >
         <span>Let's Work Together</span>
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -172,5 +361,126 @@
 
   .prose p:last-child {
     margin-bottom: 0;
+  }
+
+  /* 3D Skill Cards */
+  .skill-card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 1.5rem;
+    padding: 2rem 1.5rem;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+
+  .skill-card:hover::before {
+    opacity: 1;
+  }
+
+  .skill-card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 0 20px rgba(59, 130, 246, 0.1);
+  }
+
+  .skill-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    transform: translateZ(30px);
+    z-index: 1;
+  }
+
+  .skill-icon {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+    transition: all 0.3s ease;
+  }
+
+  .skill-card:hover .skill-icon {
+    filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.5));
+    transform: scale(1.1) rotateY(5deg);
+  }
+
+  .skill-info {
+    position: relative;
+    z-index: 1;
+  }
+
+  .skill-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .skill-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 50%, #93C5FD 100%);
+    border-radius: 9999px;
+    width: 0;
+    transition: width 1.5s ease-out;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+
+  @keyframes fillBar {
+    from {
+      width: 0;
+    }
+    to {
+      width: var(--fill-width, 100%);
+    }
+  }
+
+  .skill-percentage {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #60A5FA;
+    text-align: center;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .skill-card {
+      padding: 1.5rem 1rem;
+    }
+
+    .skill-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1rem;
+    }
   }
 </style>
