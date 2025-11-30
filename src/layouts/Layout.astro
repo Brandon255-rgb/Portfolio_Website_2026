@@ -7,7 +7,21 @@ import '../styles/global.css';
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		
+		<!-- Performance: Resource Hints -->
+		<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+		<link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
+		<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+		<link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+		
+		<!-- Performance: Reduce render-blocking -->
+		<style>
+			/* Critical CSS - Above the fold */
+			body{margin:0;background-color:#0f172a;color:#f1f5f9;font-family:system-ui,-apple-system,sans-serif}
+			*{box-sizing:border-box}
+		</style>
+		
 		<slot name="head" />
 	</head>
 	<body class="bg-slate-900 text-slate-100">

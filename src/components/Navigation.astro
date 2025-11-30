@@ -65,13 +65,12 @@
 </nav>
 
 <script lang="ts" client:load>
-  // Navbar scroll effect
+  // Navbar scroll effect - Optimized with RAF
   let lastScroll = 0;
+  let ticking = false;
   const nav = document.querySelector('.nav-wrapper') as HTMLElement;
   
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
+  function updateNav(currentScroll: number) {
     if (currentScroll <= 0) {
       nav?.classList.remove('nav-scrolled');
       return;
@@ -92,7 +91,19 @@
     }
     
     lastScroll = currentScroll;
-  });
+    ticking = false;
+  }
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateNav(currentScroll);
+      });
+      ticking = true;
+    }
+  }, { passive: true });
   
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');

@@ -175,7 +175,7 @@ import ProjectModal from './ProjectModal.astro';
                   {project.video && (
                     <button 
                       onclick={`window.openVideoModal('${project.video}')`}
-                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/23 hover:shadow-purple-500/36 group/btn"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent hover:bg-slate-700/30 text-slate-300 hover:text-white rounded-xl transition-all duration-300 border-[0.7px] border-blue-900/60 hover:border-blue-700/80 backdrop-blur-sm group/btn"
                     >
                       <svg class="w-4 h-4 group-hover/btn:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
@@ -425,17 +425,23 @@ import ProjectModal from './ProjectModal.astro';
   .project-card {
     animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0;
+    will-change: opacity, transform;
   }
   
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translate3d(0, 30px, 0);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
+  }
+  
+  /* Performance: Remove will-change after animation */
+  .project-card:hover {
+    will-change: transform;
   }
   
   .line-clamp-3 {
@@ -443,6 +449,18 @@ import ProjectModal from './ProjectModal.astro';
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  
+  /* Performance: Optimize hover transforms */
+  .project-card img,
+  .ai-featured-project img {
+    will-change: auto;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .project-card:hover img,
+  .ai-featured-project:hover img {
+    will-change: transform;
   }
   
   .ai-service-card {

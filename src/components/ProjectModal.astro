@@ -354,6 +354,8 @@
     
     if (mainImage && currentProjectImages.length > 0) {
       mainImage.src = currentProjectImages[currentImageIndex];
+      mainImage.loading = currentImageIndex === 0 ? 'eager' : 'lazy';
+      mainImage.decoding = 'async';
       if (currentIndexEl) currentIndexEl.textContent = currentImageIndex + 1;
       if (totalImagesEl) totalImagesEl.textContent = currentProjectImages.length;
     }
@@ -368,7 +370,7 @@
         onclick="window.setImageIndex(${index})"
         class="aspect-video rounded-lg overflow-hidden border-2 ${index === currentImageIndex ? 'border-blue-500' : 'border-slate-700/50'} hover:border-blue-500/50 transition-all duration-300"
       >
-        <img src="${img}" alt="Thumbnail ${index + 1}" class="w-full h-full object-cover" />
+        <img src="${img}" alt="Thumbnail ${index + 1}" class="w-full h-full object-cover" loading="lazy" decoding="async" />
       </button>
     `).join('');
   }
