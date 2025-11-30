@@ -204,13 +204,13 @@ astro
 
 ```astro
 <!-- Primary gradient (blue to cyan) -->
-bg-gradient-to-r from-blue-400 to-cyan-400
+bg-linear-to-r from-blue-400 to-cyan-400
 
 <!-- Secondary gradient (purple to pink) -->
-bg-gradient-to-r from-purple-400 to-pink-400
+bg-linear-to-r from-purple-400 to-pink-400
 
 <!-- Replace with your colors -->
-bg-gradient-to-r from-YOUR-COLOR to-YOUR-COLOR
+bg-linear-to-r from-YOUR-COLOR to-YOUR-COLOR
 ```
 
 ### Add More Projects
