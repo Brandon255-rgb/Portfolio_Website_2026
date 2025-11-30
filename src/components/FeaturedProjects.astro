@@ -1,21 +1,353 @@
 ---
+import { devProjects, aiProjects } from '../data/projects';
 ---
 
-<section class="featured-projects" id="projects">
-  <h2>Featured Projects</h2>
-  <div class="projects-grid">
-    <!-- Example project card — replace with a loop over `projects` in your page -->
-    <article class="project-card">
-      <a class="project-link" href="#">
-        <picture>
-          <source srcset="/images/project-example.webp" type="image/webp" />
-          <img src="/images/project-example.jpg" alt="Project example" loading="lazy" decoding="async" width="1200" style="max-width:100%;height:auto;" />
-        </picture>
-        <div class="project-body">
-          <h3>Project Title</h3>
-          <p class="project-desc">Short description of the project.</p>
+<section id="projects" class="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+  <!-- Background elements -->
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
+  <div class="absolute inset-0 opacity-30">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Dev Projects -->
+    <div class="mb-32">
+      <div class="text-center mb-20">
+        <div class="inline-block mb-4">
+          <span class="px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-semibold backdrop-blur-sm">
+            Featured Work
+          </span>
         </div>
-      </a>
-    </article>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
+          Development <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Projects</span>
+        </h2>
+        <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          Production applications engineered for scale, performance, and exceptional user experience
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {devProjects.map((project, index) => (
+          <article 
+            class="project-card group relative"
+            style={`animation-delay: ${index * 0.1}s;`}
+          >
+            <!-- Glow effect on hover -->
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"></div>
+            
+            <div class="relative h-full bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-blue-500/50 overflow-hidden transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-translate-y-2">
+              {project.image && (
+                <div class="relative aspect-video overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-4 right-4 z-20">
+                    <div class="px-3 py-1 bg-slate-900/80 backdrop-blur-md rounded-full border border-slate-700/50 text-xs font-medium text-slate-300">
+                      {project.tech[0]}
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
+                  {project.title}
+                </h3>
+                <p class="text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                  {project.longDescription}
+                </p>
+                
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {project.tech.slice(0, 4).map((tech) => (
+                    <span class="px-3 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-lg border border-slate-700/50 backdrop-blur-sm">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                <div class="flex gap-3">
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 hover:text-white rounded-xl transition-all duration-300 border border-slate-700/50 hover:border-slate-600 backdrop-blur-sm group/btn"
+                    >
+                      <svg class="w-4 h-4 group-hover/btn:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      <span class="text-sm font-medium">Code</span>
+                    </a>
+                  )}
+                  {project.live && (
+                    <a 
+                      href={project.live} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 group/btn"
+                    >
+                      <span class="text-sm font-medium">Live Demo</span>
+                      <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+    
+    <!-- AI Services Section -->
+    <div class="mb-32">
+      <div class="text-center mb-20">
+        <div class="inline-block mb-4">
+          <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-semibold backdrop-blur-sm">
+            AI Solutions
+          </span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
+          Artificial <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Intelligence</span>
+        </h2>
+        <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          Custom AI solutions that work—automation, fine-tuned models, and intelligent bots that deliver real business value
+        </p>
+      </div>
+      
+      <!-- AI Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="ai-service-card group">
+          <div class="icon-wrapper bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-500/30">
+            <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">LLM Fine-Tuning</h3>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            Custom language models trained on your data. Specialized GPT models that understand your domain, your customers, and your business logic.
+          </p>
+          <ul class="space-y-2 text-sm text-slate-500">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-purple-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Domain-specific training</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-purple-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Cost-optimized inference</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-purple-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Production deployment</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="ai-service-card group">
+          <div class="icon-wrapper bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border-cyan-500/30">
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Automation</h3>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            Intelligent automation that eliminates repetitive tasks. Workflows that adapt, learn, and improve over time without human intervention.
+          </p>
+          <ul class="space-y-2 text-sm text-slate-500">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-cyan-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Workflow automation</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-cyan-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Data processing pipelines</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-cyan-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>API integrations</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="ai-service-card group">
+          <div class="icon-wrapper bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border-blue-500/30">
+            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Custom Bots</h3>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            AI assistants that handle customer support, sales, and internal operations. Available 24/7, scalable to millions of conversations.
+          </p>
+          <ul class="space-y-2 text-sm text-slate-500">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Customer support bots</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Discord/Slack integration</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Voice & text capable</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Featured AI Project -->
+      {aiProjects.map((project) => (
+        <div class="ai-featured-project">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {project.image && (
+              <div class="order-2 lg:order-1">
+                <div class="aspect-video rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl shadow-purple-500/20 relative group/img">
+                  <div class="absolute inset-0 bg-gradient-to-t from-purple-900/50 via-transparent to-transparent z-10"></div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    class="w-full h-full object-cover transform group-hover/img:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            )}
+            
+            <div class="order-1 lg:order-2">
+              <div class="inline-block mb-4">
+                <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full text-purple-300 text-sm font-semibold backdrop-blur-sm">
+                  Case Study
+                </span>
+              </div>
+              <h3 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                {project.title}
+              </h3>
+              <p class="text-lg text-slate-300 mb-6 leading-relaxed">
+                {project.longDescription}
+              </p>
+              
+              <div class="flex flex-wrap gap-2 mb-8">
+                {project.tech.map((tech) => (
+                  <span class="px-4 py-2 bg-slate-800/80 border border-purple-500/20 text-purple-300 text-sm rounded-lg backdrop-blur-sm font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              {project.github && (
+                <a 
+                  href={project.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 font-semibold group/btn"
+                >
+                  <span>View Project Details</span>
+                  <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
+
+<style>
+  .project-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .ai-service-card {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.4) 100%);
+    backdrop-filter: blur(16px);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .ai-service-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(148, 163, 184, 0.3);
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+  }
+  
+  .icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border-width: 1px;
+    transition: all 0.4s ease;
+  }
+  
+  .ai-service-card:hover .icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .ai-featured-project {
+    position: relative;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    .ai-featured-project {
+      padding: 1.5rem;
+    }
+  }
+</style>
