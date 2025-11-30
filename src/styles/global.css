@@ -4,3 +4,16 @@
 
 /* Add your global styles below */
 :root { color-scheme: dark; }
+
+/* Dark blue borders for transparent buttons */
+a.bg-slate-800\/50[class*="border"],
+button.bg-slate-800\/50[class*="border"] {
+  border-width: 0.7px !important;
+  border-color: rgba(30, 58, 138, 0.6) !important;
+}
+
+a.bg-slate-800\/50[class*="border"]:hover,
+button.bg-slate-800\/50[class*="border"]:hover {
+  border-color: rgba(29, 78, 216, 0.8) !important;
+}
+

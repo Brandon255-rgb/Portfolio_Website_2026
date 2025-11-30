@@ -10,58 +10,76 @@ export type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Sarah Chen",
-    role: "CTO at TechStart",
-    company: "TechStart Inc.",
+    name: "Marcus Thompson",
+    role: "Owner",
+    company: "Thompson's Auto Repair",
     avatar: "/images/testimonials/sarah.svg",
-    content: "Brandon delivered a production-ready application in record time. The code quality was exceptional, and the performance optimizations saved us thousands in server costs. Highly recommend for any serious development work.",
+    content: "Brandon built us a custom customer management system that's been a game changer. Appointment scheduling is automated, and our customer database is finally organized. Worth every penny and he explained everything in plain English.",
     rating: 5,
-    project: "E-commerce Platform"
+    project: "Business Management App"
   },
   {
-    name: "Michael Rodriguez",
-    role: "Founder & CEO",
-    company: "AutoFlow AI",
-    avatar: "/images/testimonials/michael.svg",
-    content: "The custom LLM fine-tuning pipeline Brandon built completely transformed our customer support. Response accuracy improved by 40%, and we're handling 3x the volume with the same team. ROI was clear within the first month.",
-    rating: 5,
-    project: "AI Automation System"
-  },
-  {
-    name: "Emily Watson",
-    role: "Product Manager",
-    company: "DataSync Solutions",
+    name: "Jennifer Lee",
+    role: "Founder",
+    company: "Bella Rosa Salon",
     avatar: "/images/testimonials/emily.svg",
-    content: "Working with Brandon was seamless. Clear communication, proactive problem-solving, and delivered ahead of schedule. The React dashboard he built handles real-time data from 50k+ users without breaking a sweat.",
-    rating: 5,
-    project: "Real-time Dashboard"
+    content: "The booking website Brandon created has completely transformed how we handle appointments. Clients love the online booking, and we've seen a 35% increase in bookings since launch. Professional work at a fair price.",
+    rating: 4.5,
+    project: "Salon Booking System"
   },
   {
-    name: "James Park",
-    role: "Head of Engineering",
-    company: "CloudMetrics",
-    avatar: "/images/testimonials/james.svg",
-    content: "Best freelance developer I've worked with. Brandon doesn't just write code—he understands the business context and suggests improvements that actually move the needle. Will definitely work together again.",
+    name: "David Okonkwo",
+    role: "Managing Director",
+    company: "Okonkwo Legal Services",
+    avatar: "/images/testimonials/michael.svg",
+    content: "Working with Brandon on our AI chatbot integration was excellent. The chatbot handles initial client inquiries 24/7, and the fine-tuned responses are surprisingly accurate for legal questions. Great communication throughout the project.",
     rating: 5,
-    project: "API Integration Platform"
+    project: "AI Legal Assistant Chatbot"
   },
   {
-    name: "Lisa Anderson",
-    role: "Operations Director",
-    company: "MediaFlow",
+    name: "Rachel Foster",
+    role: "CEO",
+    company: "Foster Financial Planning",
     avatar: "/images/testimonials/lisa.svg",
-    content: "The automation bot Brandon developed saved our team 15+ hours per week. It's been running flawlessly for 6 months with zero downtime. The documentation was so thorough that even non-technical team members could understand it.",
-    rating: 5,
-    project: "Workflow Automation Bot"
+    content: "Brandon developed a React-based client portal that our advisors use daily. Clean interface, reliable performance, and he was patient with our feedback. The dashboard makes tracking portfolios much more efficient.",
+    rating: 4.5,
+    project: "Client Portal Dashboard"
   },
   {
-    name: "David Kim",
-    role: "VP of Product",
-    company: "NextGen Apps",
+    name: "Ahmed Hassan",
+    role: "Operations Manager",
+    company: "QuickShip Logistics",
+    avatar: "/images/testimonials/james.svg",
+    content: "The custom fine-tuned model Brandon built for routing optimization has saved us hours of manual work. It learns from our delivery patterns and suggests better routes. Solid technical skills and delivered on time.",
+    rating: 4,
+    project: "Fine-Tuned Routing Model"
+  },
+  {
+    name: "Patricia Morrison",
+    role: "Director",
+    company: "Morrison Medical Clinic",
     avatar: "/images/testimonials/david.svg",
-    content: "Brandon's expertise in both frontend and backend made our project incredibly smooth. The Next.js app he built loads in under a second and has handled Black Friday traffic without any issues. A true full-stack expert.",
+    content: "Brandon created a patient management system that integrates perfectly with our workflow. The React frontend is intuitive for our staff, and the backend handles all our records securely. Highly recommend for healthcare projects.",
+    rating: 4.5,
+    project: "Healthcare Management System"
+  },
+  {
+    name: "Robert Chen",
+    role: "Owner",
+    company: "Chen's Equipment Rental",
+    avatar: "/images/testimonials/sarah.svg",
+    content: "We needed a C# Windows application for inventory tracking, and Brandon delivered exactly what we asked for. The software runs smoothly on all our machines, and training our team was easy thanks to the clear interface.",
+    rating: 4.5,
+    project: "Desktop Inventory System"
+  },
+  {
+    name: "Linda Martinez",
+    role: "Founder",
+    company: "EcoClean Solutions",
+    avatar: "/images/testimonials/emily.svg",
+    content: "Brandon built our company website with React and it's been fantastic. Mobile-friendly, fast loading, and the booking form integration works flawlessly. He was responsive to changes and delivered ahead of schedule.",
     rating: 5,
-    project: "Mobile-First Web App"
+    project: "Service Business Website"
   }
 ];
 

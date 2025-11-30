@@ -51,7 +51,7 @@ function getLanguageColor(language) {
         </span>
       </div>
       <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 tracking-tight px-4">
-        Recent <span class="bg-linear-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Activity</span>
+        Recent <span class="bg-clip-text text-transparent" style="background-image: radial-gradient(circle, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);">Activity</span>
       </h2>
       <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed px-4">
         Real-time feed from my GitHub • Swipe or use arrows to explore
@@ -193,7 +193,7 @@ function getLanguageColor(language) {
         href="https://github.com/Brandon255-rgb" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 hover:border-emerald-500/50 text-white rounded-xl transition-all duration-300 backdrop-blur-xl group font-semibold text-sm sm:text-base"
+        class="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-slate-800/50 hover:bg-slate-700/50 border-[0.7px] border-blue-900/60 hover:border-emerald-500/50 text-white rounded-xl transition-all duration-300 backdrop-blur-xl group font-semibold text-sm sm:text-base"
       >
         <svg class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -207,173 +207,238 @@ function getLanguageColor(language) {
   </div>
 </section>
 
-<script lang="ts" client:load>
+<script>
   // Optimized carousel with GPU-accelerated transforms and passive listeners
-  let currentIndex = 0;
-  let isAnimating = false;
-  
-  const cards = document.querySelectorAll<HTMLElement>('.repo-card');
-  const stage = document.getElementById('carouselStage');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const currentIndexEl = document.getElementById('currentIndex');
-  const totalCards = cards.length;
-  
-  // Touch tracking
-  let touchStartX: number | null = null;
-  let touchStartY: number | null = null;
-  let isDragging = false;
-
-  function updateCarousel() {
-    if (isAnimating) return;
+  function initCarousel() {
+    let currentIndex = 0;
+    let isAnimating = false;
     
-    // Use requestAnimationFrame for smooth 60fps updates
-    requestAnimationFrame(() => {
-      cards.forEach((card, index) => {
-        const offset = index - currentIndex;
-        
-        // Remove all state classes
-        card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
-        card.setAttribute('aria-hidden', 'true');
-        
-        if (offset === 0) {
-          // Active card - center stage
-          card.classList.add('is-active');
-          card.style.transform = 'translate(-50%, -50%) scale(1)';
-          card.style.opacity = '1';
-          card.style.zIndex = '10';
-          card.setAttribute('aria-hidden', 'false');
-        } else if (offset === -1) {
-          // Previous card - slide left
-          card.classList.add('is-prev');
-          card.style.transform = 'translate(-160%, -50%) scale(0.9)';
-          card.style.opacity = '0.3';
-          card.style.zIndex = '5';
-        } else if (offset === 1) {
-          // Next card - slide right  
-          card.classList.add('is-next');
-          card.style.transform = 'translate(60%, -50%) scale(0.9)';
-          card.style.opacity = '0.3';
-          card.style.zIndex = '5';
-        } else {
-          // Hidden cards
-          card.classList.add('is-hidden');
-          card.style.transform = offset < 0 
-            ? 'translate(-170%, -50%) scale(0.8)' 
-            : 'translate(70%, -50%) scale(0.8)';
-          card.style.opacity = '0';
-          card.style.zIndex = '1';
-        }
-      });
-      
-      // Update indicator
-      if (currentIndexEl) {
-        currentIndexEl.textContent = String(currentIndex + 1);
-      }
-      
-      // Update button states
-      if (prevBtn) {
-        prevBtn.disabled = currentIndex === 0;
-        prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
-      }
-      if (nextBtn) {
-        nextBtn.disabled = currentIndex === totalCards - 1;
-        nextBtn.style.opacity = currentIndex === totalCards - 1 ? '0.3' : '1';
-      }
-      
-      isAnimating = false;
-    });
-  }
-
-  function goToNext() {
-    if (isAnimating || currentIndex >= totalCards - 1) return;
-    isAnimating = true;
-    currentIndex++;
-    updateCarousel();
-  }
-
-  function goToPrev() {
-    if (isAnimating || currentIndex <= 0) return;
-    isAnimating = true;
-    currentIndex--;
-    updateCarousel();
-  }
-
-  // Button navigation
-  prevBtn?.addEventListener('click', goToPrev);
-  nextBtn?.addEventListener('click', goToNext);
-
-  // Keyboard navigation - only when focused
-  let keyboardEnabled = true;
-  document.addEventListener('keydown', (e) => {
-    if (!keyboardEnabled) return;
+    const cards = document.querySelectorAll('.repo-card');
+    const stage = document.getElementById('carouselStage');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentIndexEl = document.getElementById('currentIndex');
+    const totalCards = cards.length;
     
-    if (e.key === 'ArrowLeft' || e.key === 'Left') {
-      e.preventDefault();
-      goToPrev();
-    } else if (e.key === 'ArrowRight' || e.key === 'Right') {
-      e.preventDefault();
-      goToNext();
-    }
-  });
-
-  // Touch/swipe - mobile optimized
-  stage?.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    isDragging = false;
-  }, { passive: true });
-
-  stage?.addEventListener('touchmove', (e) => {
-    if (touchStartX === null || touchStartY === null) return;
-    
-    const deltaX = e.touches[0].clientX - touchStartX;
-    const deltaY = e.touches[0].clientY - touchStartY;
-    
-    // Detect horizontal swipe vs vertical scroll
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-      isDragging = true;
-    }
-  }, { passive: true });
-
-  stage?.addEventListener('touchend', (e) => {
-    if (touchStartX === null || !isDragging) {
-      touchStartX = null;
-      touchStartY = null;
-      isDragging = false;
+    if (!cards.length || !stage) {
+      console.log('Carousel elements not found');
       return;
     }
     
-    const touchEndX = e.changedTouches[0].clientX;
-    const deltaX = touchEndX - touchStartX;
-    const threshold = 50; // Minimum swipe distance in px
+    console.log('Carousel initialized with', totalCards, 'cards');
     
-    if (Math.abs(deltaX) > threshold) {
-      if (deltaX > 0) {
-        goToPrev();
-      } else {
-        goToNext();
+    // Touch tracking
+    let touchStartX = null;
+    let touchStartY = null;
+    let isDragging = false;
+
+    function updateCarousel(direction = 'next') {
+      if (isAnimating) {
+        console.log('Animation blocked - already animating');
+        return;
       }
-    }
+      console.log('updateCarousel running, direction:', direction, 'currentIndex:', currentIndex);
+      isAnimating = true;
+      
+      const prevCard = cards[currentIndex];
     
-    touchStartX = null;
-    touchStartY = null;
-    isDragging = false;
-  }, { passive: true });
-
-  // Initialize
-  updateCarousel();
-
-  // Preconnect hint for better performance
-  if ('connection' in navigator) {
-    // @ts-ignore
-    const effectiveType = navigator.connection?.effectiveType;
-    if (effectiveType && effectiveType.includes('2g')) {
-      // Reduce animations on slow connections
-      cards.forEach(card => {
-        card.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+      // Animate out the previous card with flip
+      if (prevCard && direction !== 'init') {
+        prevCard.classList.add('is-flipping-out');
+        
+        // Flip out animation - pick up and rotate
+        prevCard.style.transition = 'transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s ease';
+        prevCard.style.transform = direction === 'next'
+          ? 'translate(-50%, -60%) scale(0.95) rotateY(-25deg) rotateX(10deg) translateZ(-50px)'
+          : 'translate(-50%, -60%) scale(0.95) rotateY(25deg) rotateX(10deg) translateZ(-50px)';
+        prevCard.style.opacity = '0';
+        prevCard.style.zIndex = '9';
+      }
+      
+      // Use requestAnimationFrame for smooth 60fps updates
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          cards.forEach((card, index) => {
+            const offset = index - currentIndex;
+            
+            // Remove all state classes
+            card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden', 'is-flipping', 'is-flipping-out');
+            card.setAttribute('aria-hidden', 'true');
+            card.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease';
+            
+            if (offset === 0) {
+              // Active card - flip in with 3D rotation
+              card.classList.add('is-active');
+              card.classList.add('is-flipping');
+              
+              if (direction !== 'init') {
+                // Start from rotated position
+                card.style.transition = 'none';
+                card.style.transform = direction === 'next'
+                  ? 'translate(-50%, -40%) scale(0.9) rotateY(25deg) rotateX(-10deg) translateZ(50px)'
+                  : 'translate(-50%, -40%) scale(0.9) rotateY(-25deg) rotateX(-10deg) translateZ(50px)';
+                card.style.opacity = '0';
+                card.style.zIndex = '10';
+                
+                // Animate to center
+                requestAnimationFrame(() => {
+                  card.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease';
+                  card.style.transform = 'translate(-50%, -50%) scale(1) rotateY(0deg) rotateX(0deg) translateZ(0px)';
+                  card.style.opacity = '1';
+                });
+              } else {
+                card.style.transform = 'translate(-50%, -50%) scale(1)';
+                card.style.opacity = '1';
+                card.style.zIndex = '10';
+              }
+              card.setAttribute('aria-hidden', 'false');
+            } else if (offset === -1) {
+              // Previous card - slide left
+              card.classList.add('is-prev');
+              card.style.transform = 'translate(-160%, -50%) scale(0.9)';
+              card.style.opacity = '0.3';
+              card.style.zIndex = '5';
+            } else if (offset === 1) {
+              // Next card - slide right  
+              card.classList.add('is-next');
+              card.style.transform = 'translate(60%, -50%) scale(0.9)';
+              card.style.opacity = '0.3';
+              card.style.zIndex = '5';
+            } else {
+              // Hidden cards
+              card.classList.add('is-hidden');
+              card.style.transform = offset < 0 
+                ? 'translate(-170%, -50%) scale(0.8)' 
+                : 'translate(70%, -50%) scale(0.8)';
+              card.style.opacity = '0';
+              card.style.zIndex = '1';
+            }
+          });
+          
+          // Update indicator
+          if (currentIndexEl) {
+            currentIndexEl.textContent = String(currentIndex + 1);
+          }
+          
+          // Update button states
+          if (prevBtn) {
+            prevBtn.disabled = currentIndex === 0;
+            prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+          }
+          if (nextBtn) {
+            nextBtn.disabled = currentIndex === totalCards - 1;
+            nextBtn.style.opacity = currentIndex === totalCards - 1 ? '0.3' : '1';
+          }
+        }, direction !== 'init' ? 100 : 0);
+        
+        setTimeout(() => {
+          isAnimating = false;
+        }, direction !== 'init' ? 500 : 0);
       });
     }
+
+    function goToNext() {
+      console.log('goToNext called, currentIndex:', currentIndex);
+      if (isAnimating || currentIndex >= totalCards - 1) return;
+      currentIndex++;
+      updateCarousel('next');
+    }
+
+    function goToPrev() {
+      console.log('goToPrev called, currentIndex:', currentIndex);
+      if (isAnimating || currentIndex <= 0) return;
+      currentIndex--;
+      updateCarousel('prev');
+    }
+
+    // Button navigation
+    prevBtn?.addEventListener('click', () => {
+      console.log('Prev button clicked');
+      goToPrev();
+    });
+    nextBtn?.addEventListener('click', () => {
+      console.log('Next button clicked');
+      goToNext();
+    });
+
+    // Keyboard navigation - only when focused
+    let keyboardEnabled = true;
+    document.addEventListener('keydown', (e) => {
+      if (!keyboardEnabled) return;
+      
+      if (e.key === 'ArrowLeft' || e.key === 'Left') {
+        e.preventDefault();
+        goToPrev();
+      } else if (e.key === 'ArrowRight' || e.key === 'Right') {
+        e.preventDefault();
+        goToNext();
+      }
+    });
+
+    // Touch/swipe - mobile optimized
+    stage?.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isDragging = false;
+    }, { passive: true });
+
+    stage?.addEventListener('touchmove', (e) => {
+      if (touchStartX === null || touchStartY === null) return;
+      
+      const deltaX = e.touches[0].clientX - touchStartX;
+      const deltaY = e.touches[0].clientY - touchStartY;
+      
+      // Detect horizontal swipe vs vertical scroll
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+        isDragging = true;
+      }
+    }, { passive: true });
+
+    stage?.addEventListener('touchend', (e) => {
+      if (touchStartX === null || !isDragging) {
+        touchStartX = null;
+        touchStartY = null;
+        isDragging = false;
+        return;
+      }
+      
+      const touchEndX = e.changedTouches[0].clientX;
+      const deltaX = touchEndX - touchStartX;
+      const threshold = 50; // Minimum swipe distance in px
+      
+      if (Math.abs(deltaX) > threshold) {
+        if (deltaX > 0) {
+          goToPrev();
+        } else {
+          goToNext();
+        }
+      }
+      
+      touchStartX = null;
+      touchStartY = null;
+      isDragging = false;
+    }, { passive: true });
+
+    // Initialize
+    updateCarousel('init');
+
+    // Preconnect hint for better performance
+    if ('connection' in navigator) {
+      const effectiveType = navigator.connection?.effectiveType;
+      if (effectiveType && effectiveType.includes('2g')) {
+        // Reduce animations on slow connections
+        cards.forEach(card => {
+          card.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+        });
+      }
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
   }
 </script>
 
@@ -397,6 +462,8 @@ function getLanguageColor(language) {
     justify-content: center;
     contain: layout style paint;
     touch-action: pan-y pinch-zoom;
+    perspective: 1500px;
+    transform-style: preserve-3d;
   }
 
   /* Individual repo card */
@@ -413,6 +480,14 @@ function getLanguageColor(language) {
                 opacity 0.3s ease;
     pointer-events: none;
     cursor: default;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  /* Flipping animation state */
+  .repo-card.is-flipping {
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                opacity 0.15s ease;
   }
 
   /* Public repos are links */

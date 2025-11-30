@@ -13,7 +13,7 @@ import VideoModal from './VideoModal.astro';
   
   <div class="max-w-7xl mx-auto relative z-10">
     <!-- Dev Projects -->
-    <div class="mb-32">
+    <div class="mb-22">
       <div class="text-center mb-20">
         <div class="inline-block mb-4">
           <span class="px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-semibold backdrop-blur-sm">
@@ -21,18 +21,107 @@ import VideoModal from './VideoModal.astro';
           </span>
         </div>
         <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-          Development <span class="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Projects</span>
+          Development <span class="bg-clip-text text-transparent" style="background-image: radial-gradient(circle, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);">Projects</span>
         </h2>
         <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
           Production applications engineered for scale, performance, and exceptional user experience
         </p>
       </div>
       
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {devProjects.map((project, index) => (
+      <div id="projectsGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {devProjects.slice(0, 3).map((project, index) => (
           <article 
             class="project-card group relative"
             style={`animation-delay: ${index * 0.1}s;`}
+          >
+            <!-- Glow effect on hover -->
+            <div class="absolute inset-0 bg-linear-to-r from-blue-500/18 to-cyan-500/18 rounded-2xl opacity-0 group-hover:opacity-90 blur-xl transition-all duration-500"></div>
+            
+            <div class="relative h-full bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-blue-500/50 overflow-hidden transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-translate-y-2">
+              {project.image && (
+                <div class="relative aspect-video overflow-hidden">
+                  <div class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent z-10"></div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-4 right-4 z-20">
+                    <div class="px-3 py-1 bg-slate-900/80 backdrop-blur-md rounded-full border border-slate-700/50 text-xs font-medium text-slate-300">
+                      {project.tech[0]}
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
+                  {project.title}
+                </h3>
+                <p class="text-slate-400 mb-6 leading-relaxed line-clamp-3">
+                  {project.longDescription}
+                </p>
+                
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {project.tech.slice(0, 4).map((tech) => (
+                    <span class="px-3 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-lg border border-slate-700/50 backdrop-blur-sm">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                <div class="flex gap-3">
+                  {project.video && (
+                    <button 
+                      onclick={`window.openVideoModal('${project.video}')`}
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent hover:bg-slate-700/30 text-slate-300 hover:text-white rounded-xl transition-all duration-300 border-[0.7px] border-blue-900/60 hover:border-blue-700/80 backdrop-blur-sm group/btn"
+                    >
+                      <svg class="w-4 h-4 group-hover/btn:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                      <span class="text-sm font-medium">Watch Demo</span>
+                    </button>
+                  )}
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 hover:text-white rounded-xl transition-all duration-300 border border-slate-700/50 hover:border-slate-600 backdrop-blur-sm group/btn"
+                    >
+                      <svg class="w-4 h-4 group-hover/btn:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      <span class="text-sm font-medium">Code</span>
+                    </a>
+                  )}
+                  {project.live && (
+                    <a 
+                      href={project.live} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/23 hover:shadow-blue-500/36 group/btn"
+                    >
+                      <span class="text-sm font-medium">Live Demo</span>
+                      <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      <!-- Hidden projects initially -->
+      <div id="hiddenProjects" class="grid-cols-1 lg:grid-cols-3 gap-8 mt-8 hidden">
+        {devProjects.slice(3).map((project, index) => (
+          <article 
+            class="project-card group relative"
+            style={`animation-delay: ${(index + 3) * 0.1}s;`}
           >
             <!-- Glow effect on hover -->
             <div class="absolute inset-0 bg-linear-to-r from-blue-500/18 to-cyan-500/18 rounded-2xl opacity-0 group-hover:opacity-90 blur-xl transition-all duration-500"></div>
@@ -115,18 +204,34 @@ import VideoModal from './VideoModal.astro';
           </article>
         ))}
       </div>
+      
+      <!-- Show More Button -->
+      {devProjects.length > 3 && (
+        <div class="flex justify-center mt-12">
+          <button 
+            id="showMoreBtn"
+            class="group flex items-center justify-center gap-3 px-8 py-4 bg-slate-800/50 hover:bg-slate-700/50 border-[0.7px] border-blue-900/60 hover:border-blue-500/50 text-white rounded-xl transition-all duration-300 backdrop-blur-xl font-semibold"
+          >
+            <span class="text-lg">•••</span>
+            <span id="btnText">Show More Projects</span>
+            <svg id="btnIcon" class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
     
     <!-- AI Services Section -->
-    <div class="mb-32">
+    <div class="mb-32 mt-32">
       <div class="text-center mb-20">
         <div class="inline-block mb-4">
           <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-semibold backdrop-blur-sm">
             AI Solutions
           </span>
         </div>
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-            Artificial <span class="bg-linear-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Intelligence</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tight">
+            <span class="text-white">Artificial</span> <span class="bg-clip-text text-transparent" style="background-image: radial-gradient(circle, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);">Intelligence</span>
           </h2>
         <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
           Custom AI solutions that work—automation, fine-tuned models, and intelligent bots that deliver real business value
@@ -275,7 +380,7 @@ import VideoModal from './VideoModal.astro';
                 {project.video && (
                   <button 
                     onclick={`window.openVideoModal('${project.video}')`}
-                    class="inline-flex items-center gap-3 px-6 py-4 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/23 hover:shadow-purple-500/36 font-semibold group/btn"
+                    class="inline-flex items-center gap-3 px-6 py-4 bg-transparent hover:bg-slate-700/30 text-slate-300 hover:text-white rounded-xl transition-all duration-300 border-[0.7px] border-blue-900/60 hover:border-blue-700/80 backdrop-blur-sm font-semibold group/btn"
                   >
                     <svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
@@ -288,7 +393,7 @@ import VideoModal from './VideoModal.astro';
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-3 px-6 py-4 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 hover:border-slate-600 text-slate-300 hover:text-white rounded-xl transition-all duration-300 backdrop-blur-sm font-semibold group/btn"
+                    class="inline-flex items-center gap-3 px-6 py-4 bg-slate-800/50 hover:bg-slate-700/50 border-[0.7px] border-blue-900/60 hover:border-blue-700/80 text-slate-300 hover:text-white rounded-xl transition-all duration-300 backdrop-blur-sm font-semibold group/btn"
                   >
                     <span>View Project Details</span>
                     <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -376,5 +481,46 @@ import VideoModal from './VideoModal.astro';
     }
   }
 </style>
+
+<script>
+  function initShowMoreButton() {
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    const hiddenProjects = document.getElementById('hiddenProjects');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    let isExpanded = false;
+
+    if (showMoreBtn && hiddenProjects) {
+      showMoreBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        
+        if (isExpanded) {
+          hiddenProjects.classList.remove('hidden');
+          hiddenProjects.classList.add('grid');
+          if (btnText) btnText.textContent = 'Show Less Projects';
+          if (btnIcon) btnIcon.style.transform = 'rotate(180deg)';
+        } else {
+          hiddenProjects.classList.add('hidden');
+          hiddenProjects.classList.remove('grid');
+          if (btnText) btnText.textContent = 'Show More Projects';
+          if (btnIcon) btnIcon.style.transform = 'rotate(0deg)';
+          
+          // Scroll to projects section smoothly
+          const projectsSection = document.getElementById('projects');
+          if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    }
+  }
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShowMoreButton);
+  } else {
+    initShowMoreButton();
+  }
+</script>
 
 <VideoModal videoUrl="" projectTitle="" />

@@ -19,7 +19,7 @@ import testimonials from '../data/testimonials';
         </span>
       </div>
       <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-        What Clients <span class="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent" style="-webkit-background-clip: text; -webkit-text-fill-color: transparent;">Say</span>
+        What Clients <span class="bg-clip-text text-transparent" style="background-image: radial-gradient(circle, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);">Say</span>
       </h2>
       <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
         Real feedback from real projects. No fluff, just results that matter.
@@ -29,7 +29,7 @@ import testimonials from '../data/testimonials';
     <!-- Stats Grid -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 max-w-4xl mx-auto">
       <div class="stat-box">
-        <div class="stat-number">25+</div>
+        <div class="stat-number">15+</div>
         <div class="stat-label">Happy Clients</div>
       </div>
       <div class="stat-box">
@@ -37,11 +37,11 @@ import testimonials from '../data/testimonials';
         <div class="stat-label">Success Rate</div>
       </div>
       <div class="stat-box">
-        <div class="stat-number">50+</div>
+        <div class="stat-number">30+</div>
         <div class="stat-label">Projects Done</div>
       </div>
       <div class="stat-box">
-        <div class="stat-number">5.0</div>
+        <div class="stat-number">4.7</div>
         <div class="stat-label">Avg Rating</div>
       </div>
     </div>
@@ -52,11 +52,22 @@ import testimonials from '../data/testimonials';
         <article class="testimonial-card" style={`animation-delay: ${index * 0.1}s;`}>
           <!-- Stars -->
           <div class="flex gap-1 mb-4">
-            {Array.from({ length: testimonial.rating }).map(() => (
+            {Array.from({ length: Math.floor(testimonial.rating) }).map(() => (
               <svg aria-hidden="true" class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
               </svg>
             ))}
+            {testimonial.rating % 1 !== 0 && (
+              <svg aria-hidden="true" class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                <defs>
+                  <linearGradient id={`half-${index}`}>
+                    <stop offset="50%" stop-color="currentColor" />
+                    <stop offset="50%" stop-color="rgb(100, 116, 139)" />
+                  </linearGradient>
+                </defs>
+                <path fill={`url(#half-${index})`} d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+            )}
           </div>
           
           <!-- Content -->
@@ -107,7 +118,7 @@ import testimonials from '../data/testimonials';
       </p>
       <a 
         href="#contact"
-        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-amber-500/23 hover:shadow-amber-500/36 hover:scale-105"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-amber-500/23 hover:shadow-amber-500/36 hover:scale-105 border-2 border-blue-950"
       >
         <span>Start Your Project</span>
         <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
