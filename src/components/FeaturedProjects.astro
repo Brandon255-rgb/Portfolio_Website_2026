@@ -1,6 +1,7 @@
 ---
 import { devProjects, aiProjects } from '../data/projects';
 import VideoModal from './VideoModal.astro';
+import ProjectModal from './ProjectModal.astro';
 ---
 
 <section id="projects" class="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -31,8 +32,9 @@ import VideoModal from './VideoModal.astro';
       <div id="projectsGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {devProjects.slice(0, 3).map((project, index) => (
           <article 
-            class="project-card group relative"
+            class="project-card group relative cursor-pointer"
             style={`animation-delay: ${index * 0.1}s;`}
+            onclick={`window.openProjectModal('${project.title}')`}
           >
             <!-- Glow effect on hover -->
             <div class="absolute inset-0 bg-linear-to-r from-blue-500/18 to-cyan-500/18 rounded-2xl opacity-0 group-hover:opacity-90 blur-xl transition-all duration-500"></div>
@@ -51,6 +53,10 @@ import VideoModal from './VideoModal.astro';
                     <div class="px-3 py-1 bg-slate-900/80 backdrop-blur-md rounded-full border border-slate-700/50 text-xs font-medium text-slate-300">
                       {project.tech[0]}
                     </div>
+                  </div>
+                  <!-- Click to expand indicator -->
+                  <div class="absolute bottom-4 left-4 z-20 px-3 py-1 bg-blue-600/90 backdrop-blur-md rounded-full border border-blue-500/50 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Click to expand
                   </div>
                 </div>
               )}
@@ -120,8 +126,9 @@ import VideoModal from './VideoModal.astro';
       <div id="hiddenProjects" class="grid-cols-1 lg:grid-cols-3 gap-8 mt-8 hidden">
         {devProjects.slice(3).map((project, index) => (
           <article 
-            class="project-card group relative"
+            class="project-card group relative cursor-pointer"
             style={`animation-delay: ${(index + 3) * 0.1}s;`}
+            onclick={`window.openProjectModal('${project.title}')`}
           >
             <!-- Glow effect on hover -->
             <div class="absolute inset-0 bg-linear-to-r from-blue-500/18 to-cyan-500/18 rounded-2xl opacity-0 group-hover:opacity-90 blur-xl transition-all duration-500"></div>
@@ -140,6 +147,10 @@ import VideoModal from './VideoModal.astro';
                     <div class="px-3 py-1 bg-slate-900/80 backdrop-blur-md rounded-full border border-slate-700/50 text-xs font-medium text-slate-300">
                       {project.tech[0]}
                     </div>
+                  </div>
+                  <!-- Click to expand indicator -->
+                  <div class="absolute bottom-4 left-4 z-20 px-3 py-1 bg-blue-600/90 backdrop-blur-md rounded-full border border-blue-500/50 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Click to expand
                   </div>
                 </div>
               )}
@@ -523,4 +534,19 @@ import VideoModal from './VideoModal.astro';
   }
 </script>
 
+<script is:inline define:vars={{ devProjects, aiProjects }}>
+  // Inject project data into ProjectModal
+  if (typeof window !== 'undefined' && window.setProjectsData) {
+    window.setProjectsData([...devProjects, ...aiProjects]);
+  } else {
+    // Wait for ProjectModal to load
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.setProjectsData) {
+        window.setProjectsData([...devProjects, ...aiProjects]);
+      }
+    });
+  }
+</script>
+
 <VideoModal videoUrl="" projectTitle="" />
+<ProjectModal />
