@@ -2,7 +2,7 @@
 // src/components/About.astro
 ---
 
-<section id="about" class="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+<section id="about" class="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden pb-[30px]">
   <!-- Background -->
   <div class="absolute inset-0 bg-linear-to-b from-slate-950 via-slate-900 to-slate-950"></div>
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -23,18 +23,18 @@
     </div>
 
     <!-- Top Section - Stats/CV and Bio -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch mb-16">
       <!-- Left Column - Stats & CV -->
       <div class="space-y-6">
-        <div class="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8">
+        <div class="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 px-8 py-[36px]">
           <h3 class="text-2xl font-bold text-white mb-6">Quick Stats</h3>
           <div class="grid grid-cols-2 gap-6">
             <div class="stat-card">
-              <div class="text-4xl font-black text-blue-400 mb-2">3+</div>
+              <div class="text-4xl font-black text-blue-400 mb-2">5+</div>
               <div class="text-sm text-slate-400">Years Experience</div>
             </div>
             <div class="stat-card">
-              <div class="text-4xl font-black text-blue-400 mb-2">30+</div>
+              <div class="text-4xl font-black text-blue-400 mb-2">25+</div>
               <div class="text-sm text-slate-400">Projects Shipped</div>
             </div>
             <div class="stat-card">
@@ -49,14 +49,14 @@
         </div>
 
         <!-- CV Buttons -->
-        <div class="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8">
+        <div class="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-12 min-h-[195px]">
           <h3 class="text-xl font-bold text-white mb-4">My Resume</h3>
           <p class="text-slate-400 mb-6 text-sm">Download or view my full CV with detailed experience, education, and technical skills.</p>
           <div class="flex flex-col sm:flex-row gap-3">
             <a 
               href="/assets/CV Brandon van Vuuren.pdf" 
               download
-              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 group"
+              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-blue-600 text-white hover:text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-slate-500/10 hover:shadow-blue-500/20 group border-[1px] border-slate-700 hover:border-blue-500"
             >
               <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -67,7 +67,7 @@
               href="/assets/CV Brandon van Vuuren.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-800/50 hover:bg-slate-700/50 border-[0.7px] border-blue-900/60 hover:border-blue-500/50 text-white rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm group"
+              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-blue-600 text-white hover:text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-slate-500/10 hover:shadow-blue-500/20 group border-[1px] border-slate-700 hover:border-blue-500"
             >
               <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -79,37 +79,33 @@
         </div>
       </div>
 
-      <!-- Right Column - About Text -->
+      <!-- Right Column - About Text & Lottie -->
       <div class="space-y-6">
-        <div class="prose prose-invert max-w-none">
-          <p class="text-lg text-slate-300 leading-relaxed">
-            I'm <strong class="text-white">Brandon van Vuuren</strong>, a full-stack developer and AI engineer who loves building 
-            <strong class="text-blue-400">production-ready applications</strong> that actually work at scale. I get excited about 
-            turning messy, complex requirements into clean systems that deliver real value to businesses and their users.
+        <div>
+          <h3 class="text-xl font-bold text-white mb-4">About Me</h3>
+          <p class="text-base text-slate-300 leading-relaxed mb-4">
+            I'm <strong class="text-white">Brandon van Vuuren</strong>, a full-stack developer and emerging <strong class="text-blue-400 font-bold">AI engineer</strong> who builds systems that actually ship and scale. I work across 
+            <strong class="text-white font-semibold">React, Next.js, Node.js, Python, C#, C++</strong>, and <strong class="text-white font-semibold">Astro</strong>, with practical experience turning 
+            <strong class="text-white font-semibold">AI models into real, usable product features</strong>.
           </p>
+          <p class="text-base text-slate-300 leading-relaxed">
+            I build end-to-end solutions across modern frontends, scalable backend APIs, and cloud infrastructure. Whether architecting microservices or deploying ML models, I focus on maintainable code, system reliability, and real business value.
+          </p>
+        </div>
 
-          <p class="text-lg text-slate-300 leading-relaxed">
-            My bread and butter is the <strong class="text-white">modern JavaScript/TypeScript ecosystem</strong>. I work with 
-            React, Next.js, and Node.js daily, backed by solid databases like PostgreSQL and MongoDB. From day one, I'm thinking 
-            about performance, how things will scale, and whether the code will still make sense six months from now.
-          </p>
-
-          <p class="text-lg text-slate-300 leading-relaxed">
-            When it comes to <strong class="text-blue-400">AI and automation</strong>, I love fine-tuning language models for 
-            specific use cases, building smart automation that cuts out tedious work, and deploying ML systems that fit naturally 
-            into existing workflows. I'm all about practical AI that solves actual problems, not just flashy demos that look cool 
-            but don't help anyone.
-          </p>
-
-          <p class="text-lg text-slate-300 leading-relaxed">
-            I've had the chance to work with startups and bigger companies across different industries. From real-time analytics 
-            dashboards handling 10k+ events per second to custom LLM pipelines that cut training costs by 60%, every project teaches 
-            me something new. My process is pretty straightforward: really understand what needs to happen, design something that'll 
-            work, ship it quickly, and then improve it based on real feedback.
-          </p>
+        <!-- Lottie Animation Container -->
+        <div class="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl pt-0 pb-12 px-12 flex items-center justify-center min-h-[295px]">
+          <dotlottie-player
+            src="/assets/PC Coding and Dislay app Mobile.lottie"
+            autoplay
+            loop
+            style="width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
+          </dotlottie-player>
         </div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest"></script>
 
     <!-- Core Expertise - Full Width with 3D Chart -->
     <div class="mb-16">
@@ -261,27 +257,60 @@
 
     <script>
       // 3D Skill Card Animation - High-performance RAF implementation
+      // Detect if device supports touch and has reduced motion preference
+      const isTouchDevice = () => {
+        return (
+          (typeof window !== 'undefined' &&
+            ('ontouchstart' in window ||
+              navigator.maxTouchPoints > 0 ||
+              (navigator as any).msMaxTouchPoints > 0)) ||
+          false
+        );
+      };
+      
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const shouldDisable3D = isTouchDevice() || prefersReducedMotion;
+      
       const skillCards = document.querySelectorAll('.skill-card');
       
       skillCards.forEach(card => {
-        let rafId = null;
+        let rafId: any = null;
         let isHovering = false;
         
         // Cache rect on mouseenter to avoid repeated reflows
-        let cachedRect = null;
+        let cachedRect: any = null;
         
-        const updateTransform = (x, y) => {
+        // Skip 3D effects on touch devices - use simple scale instead
+        if (shouldDisable3D) {
+          card.addEventListener('mouseenter', () => {
+            (card as HTMLElement).style.willChange = 'transform';
+            (card as HTMLElement).style.transition = 'transform 0.2s ease-out';
+            (card as HTMLElement).style.transform = 'scale(1.08) translateY(-4px)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+            (card as HTMLElement).style.transform = 'scale(1) translateY(0)';
+            setTimeout(() => {
+              (card as HTMLElement).style.willChange = 'auto';
+            }, 200);
+          });
+          return;
+        }
+        
+        const updateTransform = (x: number, y: number) => {
           if (!isHovering) return;
           
           const centerX = cachedRect.width / 2;
           const centerY = cachedRect.height / 2;
           
-          // Reduce rotation sensitivity from /10 to /15 for smoother feel
-          const rotateX = ((y - cachedRect.top) - centerY) / 15;
-          const rotateY = (centerX - (x - cachedRect.left)) / 15;
+          // Increased rotation sensitivity for more exaggerated effect (from /15 to /12)
+          // This gives 10% more movement range
+          const rotateX = ((y - cachedRect.top) - centerY) / 12;
+          const rotateY = (centerX - (x - cachedRect.left)) / 12;
           
+          // Increased scale from 1.05 to 1.15 for more dramatic lift on hover (10% more)
           // Use translate3d for GPU acceleration
-          card.style.transform = `translate3d(0, 0, 0) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+          (card as HTMLElement).style.transform = `translate3d(0, 0, 0) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.15, 1.15, 1.15)`;
         };
         
         card.addEventListener('mouseenter', () => {
@@ -289,14 +318,15 @@
           // Cache rect once on enter
           cachedRect = card.getBoundingClientRect();
           // Promote to composite layer
-          card.style.willChange = 'transform';
+          (card as HTMLElement).style.willChange = 'transform';
         });
         
-        card.addEventListener('mousemove', (e) => {
+        card.addEventListener('mousemove', (e: Event) => {
           if (rafId) return; // Skip if frame already scheduled
           
+          const mouseEvent = e as MouseEvent;
           rafId = requestAnimationFrame(() => {
-            updateTransform(e.clientX, e.clientY);
+            updateTransform(mouseEvent.clientX, mouseEvent.clientY);
             rafId = null;
           });
         });
@@ -308,10 +338,10 @@
             rafId = null;
           }
           // Reset with GPU-accelerated transform
-          card.style.transform = 'translate3d(0, 0, 0) perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+          (card as HTMLElement).style.transform = 'translate3d(0, 0, 0) perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
           // Remove will-change after transition completes
           setTimeout(() => {
-            card.style.willChange = 'auto';
+            (card as HTMLElement).style.willChange = 'auto';
             cachedRect = null;
           }, 300);
         });
@@ -329,23 +359,29 @@
             const cards = entry.target.querySelectorAll('.skill-card');
             // Stagger animations to reduce layout thrashing
             cards.forEach((card, index) => {
-              const fill = card.querySelector('.skill-fill');
-              const targetWidth = fill.style.width;
+              const fill = card.querySelector('.skill-fill') as HTMLElement | null;
+              const targetWidth = fill?.style.width;
               
               // Use requestAnimationFrame for smoother animation start
               requestAnimationFrame(() => {
-                fill.style.width = '0';
-                // Stagger by 80ms per card
-                setTimeout(() => {
-                  fill.style.willChange = 'width';
-                  fill.style.transition = 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
-                  fill.style.width = targetWidth;
-                  
-                  // Clean up will-change
+                if (fill) {
+                  fill.style.width = '0';
+                  // Stagger by 80ms per card
                   setTimeout(() => {
-                    fill.style.willChange = 'auto';
-                  }, 1200);
-                }, index * 80);
+                    if (fill) {
+                      fill.style.willChange = 'width';
+                      fill.style.transition = 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+                      fill.style.width = targetWidth || '0';
+                      
+                      // Clean up will-change
+                      setTimeout(() => {
+                        if (fill) {
+                          fill.style.willChange = 'auto';
+                        }
+                      }, 1200);
+                    }
+                  }, index * 80);
+                }
               });
             });
             observer.unobserve(entry.target);
@@ -363,7 +399,7 @@
     <div class="text-center">
       <a 
         href="#contact" 
-        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 group border-[1.2px] border-white"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-slate-500/10 hover:shadow-slate-500/15 group border-[1.2px] border-blue-600/30"
       >
         <span>Let's Work Together</span>
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -446,7 +482,7 @@
 
   .skill-card:hover {
     border-color: rgba(59, 130, 246, 0.5);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 0 20px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.08), 0 0 20px rgba(59, 130, 246, 0.04);
   }
 
   .skill-icon-wrapper {
@@ -470,7 +506,7 @@
     content: '';
     position: absolute;
     inset: 10px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0.5;
     transition: opacity 0.3s ease;
@@ -516,7 +552,7 @@
     border-radius: 9999px;
     width: 0;
     transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
     /* GPU acceleration for width animation */
     will-change: width;
   }
@@ -541,6 +577,7 @@
   @media (max-width: 768px) {
     .skill-card {
       padding: 1.5rem 1rem;
+      /* Reduce padding on mobile for better space utilization */
     }
 
     .skill-icon-wrapper {
@@ -551,6 +588,34 @@
 
     .skill-name {
       font-size: 1rem;
+    }
+    
+    /* Disable hover effects on mobile devices for performance */
+    .skill-card:hover {
+      border-color: rgba(59, 130, 246, 0.2);
+      box-shadow: none;
+    }
+  }
+  
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    .skill-card {
+      padding: 1.25rem 0.875rem;
+      min-width: 160px;
+    }
+    
+    .skill-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 0.75rem;
+    }
+    
+    .skill-name {
+      font-size: 0.9375rem;
+    }
+    
+    .skill-percentage {
+      font-size: 0.8125rem;
     }
   }
 </style>

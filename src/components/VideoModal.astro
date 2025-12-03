@@ -146,14 +146,12 @@ const { videoUrl, projectTitle } = Astro.props;
       }
     });
 
-    // Expose global function to open modal
+    // Expose global function to open video in new tab
     (window as any).openVideoModal = (videoSrc: string) => {
-      if (!modal || !video) return;
-      video.src = videoSrc;
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      video.play().catch(err => console.log('Video autoplay prevented:', err));
+      // Open video in new tab instead of modal
+      if (videoSrc) {
+        window.open(videoSrc, '_blank', 'noopener,noreferrer');
+      }
     };
   }
 

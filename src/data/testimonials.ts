@@ -63,24 +63,7 @@ const testimonials: Testimonial[] = [
     rating: 4.5,
     project: "Healthcare Management System"
   },
-  {
-    name: "Robert Chen",
-    role: "Owner",
-    company: "Chen's Equipment Rental",
-    avatar: "/images/testimonials/sarah.svg",
-    content: "We needed a C# Windows application for inventory tracking, and Brandon delivered exactly what we asked for. The software runs smoothly on all our machines, and training our team was easy thanks to the clear interface.",
-    rating: 4.5,
-    project: "Desktop Inventory System"
-  },
-  {
-    name: "Linda Martinez",
-    role: "Founder",
-    company: "EcoClean Solutions",
-    avatar: "/images/testimonials/emily.svg",
-    content: "Brandon built our company website with React and it's been fantastic. Mobile-friendly, fast loading, and the booking form integration works flawlessly. He was responsive to changes and delivered ahead of schedule.",
-    rating: 5,
-    project: "Service Business Website"
-  }
+
 ];
 
 export default testimonials;

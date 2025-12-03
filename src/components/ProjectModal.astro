@@ -237,16 +237,21 @@
     const modal = document.getElementById('projectModal');
     if (!modal) return;
 
-    // Get images for this project
-    const projectKey = Object.keys(projectImageMappings).find(key => 
-      project.title.toLowerCase().includes(key.toLowerCase()) || 
-      key.toLowerCase().includes(project.title.toLowerCase())
-    );
-    
-    const imageFolder = project.image.substring(0, project.image.lastIndexOf('/'));
-    currentProjectImages = projectKey 
-      ? projectImageMappings[projectKey].map(img => `${imageFolder}/${img}`)
-      : [project.image];
+    // Get images for this project - use images array if available, otherwise fall back to single image or image mappings
+    if (project.images && project.images.length > 0) {
+      currentProjectImages = project.images;
+    } else {
+      // Fallback to legacy image mappings for backwards compatibility
+      const projectKey = Object.keys(projectImageMappings).find(key => 
+        project.title.toLowerCase().includes(key.toLowerCase()) || 
+        key.toLowerCase().includes(project.title.toLowerCase())
+      );
+      
+      const imageFolder = project.image.substring(0, project.image.lastIndexOf('/'));
+      currentProjectImages = projectKey 
+        ? projectImageMappings[projectKey].map(img => `${imageFolder}/${img}`)
+        : [project.image];
+    }
     
     currentImageIndex = 0;
 
@@ -268,14 +273,14 @@
       const iconUrl = techIcons[tech] || null;
       if (iconUrl) {
         return `
-          <div class="flex items-center gap-2 px-4 py-2 bg-slate-800/80 border border-slate-700/50 rounded-lg backdrop-blur-sm group hover:border-blue-500/50 transition-all duration-300">
+          <div class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/30 rounded-lg backdrop-blur-sm group hover:border-blue-400/60 hover:from-blue-500/30 hover:to-cyan-500/30 transition-all duration-300">
             <img src="${iconUrl}" alt="${tech}" class="w-6 h-6 group-hover:scale-110 transition-transform" />
-            <span class="text-sm font-medium text-slate-300">${tech}</span>
+            <span class="text-sm font-medium text-blue-300">${tech}</span>
           </div>
         `;
       } else {
         return `
-          <span class="px-4 py-2 bg-slate-800/80 border border-slate-700/50 text-slate-300 text-sm rounded-lg backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300">
+          <span class="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/30 text-blue-300 text-sm rounded-lg backdrop-blur-sm hover:border-blue-400/60 hover:from-blue-500/30 hover:to-cyan-500/30 transition-all duration-300 font-medium">
             ${tech}
           </span>
         `;
@@ -403,6 +408,8 @@
   function initProjectModal() {
     const prevBtn = document.getElementById('prevImageBtn');
     const nextBtn = document.getElementById('nextImageBtn');
+    const modal = document.getElementById('projectModal');
+    const modalContent = document.getElementById('modalContent');
     
     if (prevBtn) prevBtn.addEventListener('click', prevImage);
     if (nextBtn) nextBtn.addEventListener('click', nextImage);
@@ -411,6 +418,15 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeProjectModal();
     });
+
+    // Close when clicking outside modal content
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal || (e.target.id === 'projectModal')) {
+          closeProjectModal();
+        }
+      });
+    }
   }
 
   // Expose functions to window

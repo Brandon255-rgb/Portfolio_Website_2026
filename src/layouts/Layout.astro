@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import PageLoader from '../components/PageLoader.astro';
 
 ---
 
@@ -7,7 +8,12 @@ import '../styles/global.css';
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="theme-color" content="#0f172a" />
+		<meta name="format-detection" content="telephone=no" />
 		
 		<!-- Performance: Resource Hints -->
 		<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -25,6 +31,8 @@ import '../styles/global.css';
 		<slot name="head" />
 	</head>
 	<body class="bg-slate-900 text-slate-100">
+		<PageLoader />
 		<slot />
+		<script src="https://unpkg.com/@dotlottie/player-component"></script>
 	</body>
 </html>

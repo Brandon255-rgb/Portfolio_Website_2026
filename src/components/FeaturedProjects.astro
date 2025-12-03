@@ -37,7 +37,7 @@ import ProjectModal from './ProjectModal.astro';
             onclick={`window.openProjectModal('${project.title}')`}
           >
             <!-- Glow effect on hover -->
-            <div class="absolute inset-0 bg-linear-to-r from-blue-500/18 to-cyan-500/18 rounded-2xl opacity-0 group-hover:opacity-90 blur-xl transition-all duration-500"></div>
+            <div class="absolute inset-0 bg-linear-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-60 blur-lg transition-all duration-500"></div>
             
             <div class="relative h-full bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-blue-500/50 overflow-hidden transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-translate-y-2">
               {project.image && (
@@ -107,7 +107,7 @@ import ProjectModal from './ProjectModal.astro';
                       href={project.live} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/23 hover:shadow-blue-500/36 group/btn"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white rounded-xl transition-all duration-300 shadow-lg shadow-slate-500/10 hover:shadow-slate-500/15 group/btn border border-blue-600/30"
                     >
                       <span class="text-sm font-medium">Live Demo</span>
                       <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,7 +131,7 @@ import ProjectModal from './ProjectModal.astro';
             onclick={`window.openProjectModal('${project.title}')`}
           >
             <!-- Glow effect on hover -->
-            <div class="absolute inset-0 bg-linear-to-r from-blue-500/18 to-cyan-500/18 rounded-2xl opacity-0 group-hover:opacity-90 blur-xl transition-all duration-500"></div>
+            <div class="absolute inset-0 bg-linear-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-60 blur-lg transition-all duration-500"></div>
             
             <div class="relative h-full bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 group-hover:border-blue-500/50 overflow-hidden transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-translate-y-2">
               {project.image && (
@@ -201,7 +201,7 @@ import ProjectModal from './ProjectModal.astro';
                       href={project.live} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/23 hover:shadow-blue-500/36 group/btn"
+                      class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white rounded-xl transition-all duration-300 shadow-lg shadow-slate-500/10 hover:shadow-slate-500/15 group/btn border border-blue-600/30"
                     >
                       <span class="text-sm font-medium">Live Demo</span>
                       <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -381,7 +381,7 @@ import ProjectModal from './ProjectModal.astro';
               
               <div class="flex flex-wrap gap-2 mb-8">
                 {project.tech.map((tech) => (
-                  <span class="px-4 py-2 bg-slate-800/80 border border-purple-500/20 text-purple-300 text-sm rounded-lg backdrop-blur-sm font-medium">
+                  <span class="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/30 text-blue-300 text-sm rounded-lg backdrop-blur-sm font-medium hover:from-blue-500/30 hover:to-cyan-500/30 hover:border-blue-400/60 transition-all duration-300">
                     {tech}
                   </span>
                 ))}
@@ -476,7 +476,7 @@ import ProjectModal from './ProjectModal.astro';
   .ai-service-card:hover {
     transform: translateY(-8px);
     border-color: rgba(148, 163, 184, 0.3);
-    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
   }
   
   .icon-wrapper {
@@ -501,12 +501,74 @@ import ProjectModal from './ProjectModal.astro';
     background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
     backdrop-filter: blur(20px);
     border-radius: 2rem;
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.12);
   }
   
   @media (max-width: 768px) {
     .ai-featured-project {
       padding: 1.5rem;
+    }
+    
+    .project-card {
+      margin: 0;
+    }
+    
+    .project-card .p-8 {
+      padding: 1.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .project-card {
+      margin: 0;
+    }
+    
+    .project-card h3 {
+      font-size: 1.25rem;
+    }
+    
+    .project-card p {
+      font-size: 0.875rem;
+    }
+    
+    .flex.gap-3 {
+      flex-direction: column;
+    }
+    
+    .flex.gap-3 > button,
+    .flex.gap-3 > a {
+      width: 100%;
+    }
+    
+    .ai-service-card {
+      padding: 1.5rem;
+      border-radius: 1rem;
+    }
+    
+    .icon-wrapper {
+      width: 56px;
+      height: 56px;
+    }
+    
+    .ai-featured-project {
+      padding: 1.25rem;
+      border-radius: 1.5rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+    
+    h3 {
+      font-size: 1.125rem;
+    }
+    
+    p {
+      font-size: 0.875rem;
     }
   }
 </style>

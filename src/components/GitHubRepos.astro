@@ -242,15 +242,15 @@ function getLanguageColor(language) {
       
       const prevCard = cards[currentIndex];
     
-      // Animate out the previous card with flip
+      // Animate out the previous card with dynamic flip and lift
       if (prevCard && direction !== 'init') {
         prevCard.classList.add('is-flipping-out');
         
-        // Flip out animation - pick up and rotate
-        prevCard.style.transition = 'transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s ease';
+        // Flip out animation - pick up, rotate and slide away
+        prevCard.style.transition = 'transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease';
         prevCard.style.transform = direction === 'next'
-          ? 'translate(-50%, -60%) scale(0.95) rotateY(-25deg) rotateX(10deg) translateZ(-50px)'
-          : 'translate(-50%, -60%) scale(0.95) rotateY(25deg) rotateX(10deg) translateZ(-50px)';
+          ? 'translate(-150%, -80%) scale(0.8) rotateY(-45deg) rotateX(15deg) rotateZ(-8deg) translateZ(-100px)'
+          : 'translate(150%, -80%) scale(0.8) rotateY(45deg) rotateX(15deg) rotateZ(8deg) translateZ(-100px)';
         prevCard.style.opacity = '0';
         prevCard.style.zIndex = '9';
       }
@@ -264,52 +264,52 @@ function getLanguageColor(language) {
             // Remove all state classes
             card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden', 'is-flipping', 'is-flipping-out');
             card.setAttribute('aria-hidden', 'true');
-            card.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease';
+            card.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease';
             
             if (offset === 0) {
-              // Active card - flip in with 3D rotation
+              // Active card - dynamic flip in with bounce and life
               card.classList.add('is-active');
               card.classList.add('is-flipping');
               
               if (direction !== 'init') {
-                // Start from rotated position
+                // Start from rotated position (far back in space)
                 card.style.transition = 'none';
                 card.style.transform = direction === 'next'
-                  ? 'translate(-50%, -40%) scale(0.9) rotateY(25deg) rotateX(-10deg) translateZ(50px)'
-                  : 'translate(-50%, -40%) scale(0.9) rotateY(-25deg) rotateX(-10deg) translateZ(50px)';
+                  ? 'translate(150%, -80%) scale(0.75) rotateY(50deg) rotateX(-20deg) rotateZ(10deg) translateZ(100px)'
+                  : 'translate(-150%, -80%) scale(0.75) rotateY(-50deg) rotateX(-20deg) rotateZ(-10deg) translateZ(100px)';
                 card.style.opacity = '0';
                 card.style.zIndex = '10';
                 
-                // Animate to center
+                // Animate to center with bounce and depth
                 requestAnimationFrame(() => {
-                  card.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease';
-                  card.style.transform = 'translate(-50%, -50%) scale(1) rotateY(0deg) rotateX(0deg) translateZ(0px)';
+                  card.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease';
+                  card.style.transform = 'translate(-50%, -50%) scale(1) rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(0px)';
                   card.style.opacity = '1';
                 });
               } else {
-                card.style.transform = 'translate(-50%, -50%) scale(1)';
+                card.style.transform = 'translate(-50%, -50%) scale(1) rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(0px)';
                 card.style.opacity = '1';
                 card.style.zIndex = '10';
               }
               card.setAttribute('aria-hidden', 'false');
             } else if (offset === -1) {
-              // Previous card - slide left
+              // Previous card - smooth depth recede
               card.classList.add('is-prev');
-              card.style.transform = 'translate(-160%, -50%) scale(0.9)';
-              card.style.opacity = '0.3';
+              card.style.transform = 'translate(-180%, -50%) scale(0.85) rotateY(20deg) rotateX(-5deg) translateZ(-30px)';
+              card.style.opacity = '0.2';
               card.style.zIndex = '5';
             } else if (offset === 1) {
-              // Next card - slide right  
+              // Next card - slide right with depth
               card.classList.add('is-next');
-              card.style.transform = 'translate(60%, -50%) scale(0.9)';
-              card.style.opacity = '0.3';
+              card.style.transform = 'translate(80%, -50%) scale(0.85) rotateY(-20deg) rotateX(-5deg) translateZ(-30px)';
+              card.style.opacity = '0.2';
               card.style.zIndex = '5';
             } else {
-              // Hidden cards
+              // Hidden cards - far back with scale
               card.classList.add('is-hidden');
               card.style.transform = offset < 0 
-                ? 'translate(-170%, -50%) scale(0.8)' 
-                : 'translate(70%, -50%) scale(0.8)';
+                ? 'translate(-200%, -50%) scale(0.75) rotateY(35deg) translateZ(-60px)'
+                : 'translate(100%, -50%) scale(0.75) rotateY(-35deg) translateZ(-60px)';
               card.style.opacity = '0';
               card.style.zIndex = '1';
             }
@@ -333,7 +333,7 @@ function getLanguageColor(language) {
         
         setTimeout(() => {
           isAnimating = false;
-        }, direction !== 'init' ? 500 : 0);
+        }, direction !== 'init' ? 550 : 0);
       });
     }
 
@@ -452,7 +452,7 @@ function getLanguageColor(language) {
     padding: 1rem 0 2rem;
   }
 
-  /* Carousel stage - GPU-accelerated */
+  /* Carousel stage - GPU-accelerated with enhanced depth */
   .carousel-stage {
     position: relative;
     width: 100%;
@@ -462,8 +462,9 @@ function getLanguageColor(language) {
     justify-content: center;
     contain: layout style paint;
     touch-action: pan-y pinch-zoom;
-    perspective: 1500px;
+    perspective: 2000px;
     transform-style: preserve-3d;
+    transform: perspective(2000px) rotateX(0deg);
   }
 
   /* Individual repo card */
@@ -476,8 +477,8 @@ function getLanguageColor(language) {
     max-width: 340px;
     min-height: 320px;
     will-change: transform, opacity;
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                opacity 0.3s ease;
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                opacity 0.35s ease;
     pointer-events: none;
     cursor: default;
     transform-style: preserve-3d;
@@ -486,8 +487,13 @@ function getLanguageColor(language) {
   
   /* Flipping animation state */
   .repo-card.is-flipping {
-    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
-                opacity 0.15s ease;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                opacity 0.4s ease;
+  }
+  
+  .repo-card.is-flipping-out {
+    transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                opacity 0.4s ease;
   }
 
   /* Public repos are links */

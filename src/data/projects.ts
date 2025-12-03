@@ -8,6 +8,7 @@ export interface Project {
   github?: string;
   live?: string;
   image?: string;
+  images?: string[]; // Gallery images
   video?: string;
   featured: boolean;
   category: 'dev' | 'ai';
@@ -22,6 +23,22 @@ export const projects: Project[] = [
     tech: ["Apache Kafka", "React", "Python", "D3.js", "Redis", "Docker", "Kubernetes"],
     github: "https://github.com/Brandon255-rgb/kafka-dashboard",
     image: "/images/Proof of Work/kafka-streaming-dashboard/home.webp",
+    images: [
+      "/images/Proof of Work/kafka-streaming-dashboard/data sources.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/fiscal calendar.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/home dash 2.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/home dash.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/home.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/kafka (2).webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/kafka pipeline.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/kafka pipeline2.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/kafka.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/products.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/sales.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/sales2.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/streaming service.webp",
+      "/images/Proof of Work/kafka-streaming-dashboard/suppliers.webp"
+    ],
     featured: true,
     category: 'dev'
   },
@@ -32,6 +49,16 @@ export const projects: Project[] = [
     tech: ["TypeScript", "React", "Python", "FastAPI", "PostgreSQL", "Docker", "OpenAI API"],
     github: "https://github.com/Brandon255-rgb/recode-platform",
     image: "/images/Proof of Work/Recode/coding_challenge.png",
+    images: [
+      "/images/Proof of Work/Recode/coding_challenge.png",
+      "/images/Proof of Work/Recode/analytics.png",
+      "/images/Proof of Work/Recode/analytics2.png",
+      "/images/Proof of Work/Recode/badges.png",
+      "/images/Proof of Work/Recode/modules.pjng.png",
+      "/images/Proof of Work/Recode/overviewCards.png",
+      "/images/Proof of Work/Recode/overviewTable.png",
+      "/images/Proof of Work/Recode/profile.png"
+    ],
     video: "/images/Proof of Work/Recode/recode_presentation.mp4",
     featured: true,
     category: 'dev'
@@ -43,6 +70,9 @@ export const projects: Project[] = [
     tech: ["Python", "TensorFlow", "FastAPI", "PostgreSQL", "Celery", "Redis", "React"],
     github: "https://github.com/Brandon255-rgb/ai-invoice-manager",
     image: "/images/Proof of Work/ai-invoice-manager/home.webp",
+    images: [
+      "/images/Proof of Work/ai-invoice-manager/home.webp"
+    ],
     featured: true,
     category: 'dev'
   },
@@ -53,6 +83,14 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "PostgreSQL", "TypeScript", "Chart.js", "Tailwind CSS"],
     github: "https://github.com/Brandon255-rgb/university-system",
     image: "/images/Proof of Work/University Website/whbd8cylzblqjumatmje.webp",
+    images: [
+      "/images/Proof of Work/University Website/e28jzmcmxt4fz0zrdnfw.webp",
+      "/images/Proof of Work/University Website/kqcsm4c4unwmdmmdpyob.webp",
+      "/images/Proof of Work/University Website/mnakc9omlwhmynwp8ukb.webp",
+      "/images/Proof of Work/University Website/nfxwzoi42eikn4ttcg0t.webp",
+      "/images/Proof of Work/University Website/whbd8cylzblqjumatmje.webp",
+      "/images/Proof of Work/University Website/xxld9u8mcgxsfvvpnemn.webp"
+    ],
     video: "/images/Proof of Work/University Website/university_demo.mp4",
     featured: true,
     category: 'dev'
@@ -64,6 +102,12 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Tailwind CSS"],
     github: "https://github.com/Brandon255-rgb/nail-salon",
     image: "/images/Proof of Work/Nail salon Website/home.webp",
+    images: [
+      "/images/Proof of Work/Nail salon Website/description.webp",
+      "/images/Proof of Work/Nail salon Website/home.webp",
+      "/images/Proof of Work/Nail salon Website/products.webp",
+      "/images/Proof of Work/Nail salon Website/reviews.webp"
+    ],
     video: "/images/Proof of Work/Nail salon Website/video_demo.mp4",
     featured: true,
     category: 'dev'
@@ -75,6 +119,16 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Next.js"],
     github: "https://github.com/Brandon255-rgb/nail-salon-website",
     image: "/images/Proof of Work/nail-salon-website 2/home.webp",
+    images: [
+      "/images/Proof of Work/nail-salon-website 2/book.webp",
+      "/images/Proof of Work/nail-salon-website 2/booking.webp",
+      "/images/Proof of Work/nail-salon-website 2/bookings.webp",
+      "/images/Proof of Work/nail-salon-website 2/home.webp",
+      "/images/Proof of Work/nail-salon-website 2/location.webp",
+      "/images/Proof of Work/nail-salon-website 2/locations.webp",
+      "/images/Proof of Work/nail-salon-website 2/review.webp",
+      "/images/Proof of Work/nail-salon-website 2/reviews.webp"
+    ],
     featured: true,
     category: 'dev'
   },
@@ -87,6 +141,9 @@ export const projects: Project[] = [
     tech: ["Python", "PyTorch", "Hugging Face Transformers", "CUDA", "MLflow", "Docker", "AWS SageMaker"],
     github: "https://github.com/Brandon255-rgb/llm-finetuning-pipeline",
     image: "/images/Proof of Work/ai-invoice-manager/home.webp",
+    images: [
+      "/images/Proof of Work/ai-invoice-manager/home.webp"
+    ],
     video: "/videos/llm-pipeline-demo.mp4",
     featured: true,
     category: 'ai'
