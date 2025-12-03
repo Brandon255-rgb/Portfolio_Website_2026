@@ -24,15 +24,23 @@ import PageLoader from '../components/PageLoader.astro';
 		<!-- Performance: Reduce render-blocking -->
 		<style>
 			/* Critical CSS - Above the fold */
-			body{margin:0;background-color:#0f172a;color:#f1f5f9;font-family:system-ui,-apple-system,sans-serif}
+			body{margin:0;background:linear-gradient(180deg, #1a1f2e 0%, #0f1419 25%, #0a0e1a 50%, #0f0f1f 75%, #0f172a 100%);color:#f1f5f9;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
 			*{box-sizing:border-box}
 		</style>
 		
 		<slot name="head" />
 	</head>
-	<body class="bg-slate-900 text-slate-100">
+	<body class="min-h-screen text-slate-100 relative overflow-x-hidden" style="background: linear-gradient(180deg, #1a1f2e 0%, #0f1419 25%, #0a0e1a 50%, #0f0f1f 75%, #0f172a 100%);">
+		<!-- Background accent elements -->
+		<div class="fixed inset-0 pointer-events-none overflow-hidden">
+			<div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl"></div>
+			<div class="absolute bottom-0 left-0 w-96 h-96 bg-slate-700/3 rounded-full blur-3xl"></div>
+			<div class="absolute top-1/2 right-1/4 w-64 h-64 bg-slate-600/2 rounded-full blur-3xl"></div>
+		</div>
 		<PageLoader />
-		<slot />
+		<div class="relative z-10">
+			<slot />
+		</div>
 		<script src="https://unpkg.com/@dotlottie/player-component"></script>
 	</body>
 </html>
